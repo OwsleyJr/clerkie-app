@@ -44,13 +44,13 @@ const TextWithImage = () => {
             (json.subtitle !== undefined && json.subtitle.text.length > 0) ? (
               <div>
                 <p
-                  className={`text-[${json.title.font_size}px] font-${json.title.font_weight} text-[${json.title.color}]`}
+                  className={`text-[${json.title.font_size}px] font-[${json.title.font_weight}] text-[${json.title.color}]`}
                 >
                   {json.title.text}
                 </p>
 
                 <p
-                  className={`text-${json.subtitle.font_size} font-${json.subtitle.font_weight} text-[${json.subtitle.color}]`}
+                  className={`text-[${json.subtitle.font_size}] font-[${json.subtitle.font_weight}] text-[${json.subtitle.color}]`}
                 >
                   {json.subtitle.text}
                 </p>
@@ -80,7 +80,7 @@ const TextWithImage = () => {
             ) : (
               <div>
                 <p
-                  className={`text-${json.title.font_size} font-${json.title.font_weight} leading-5 text-[${json.title.color}]`}
+                  className={`text-[${json.title.font_size}] font-[${json.title.font_weight}] leading-5 text-[${json.title.color}]`}
                 >
                   {json.title.text}
                 </p>

@@ -1,0 +1,20 @@
+{
+  "type": "text",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "font_size": "12",
+  "font_weight": "normal",
+  "color": "gray",
+  "width_percent": "0.5",
+  "alignment": "center",
+  "view_alignment": "center",
+  "click_action": "present_popup",
+  "click_action_data": {
+    "data": [
+      {
+        "type": "text",
+        "text": "This is my popup!",
+        "click_action": "dismiss"
+      }
+    ]
+  }
+}
