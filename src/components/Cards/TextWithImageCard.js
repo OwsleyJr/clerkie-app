@@ -5,7 +5,7 @@ import Image from "next/image";
 const TextWithImage = () => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(5);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     setJson(textImage);
@@ -27,9 +27,11 @@ const TextWithImage = () => {
 
   return (
     <>
-      {show && Object.keys(json).length > 0 && compHeight && (
+      {Object.keys(json).length > 0 && compHeight && (
         <div
-          className={`w-96 h-${compHeight} rounded shadow-lg px-5 bg-white relative`}
+          className={`w-96 h-${compHeight} mb-12 rounded shadow-lg shadow-black px-5 bg-white relative ${
+            show ? "block" : "hidden"
+          }`}
         >
           <div className="flex items-center mb-4 mr-10 h-full">
             <div className={`w-${compHeight} h-full mr-3 relative`}>

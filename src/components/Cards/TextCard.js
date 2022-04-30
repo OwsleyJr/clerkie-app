@@ -6,7 +6,7 @@ const Text = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="w-11/12 mb-48 sm:w-2/3 sm:mb-12">
+    <div className="w-11/12 mb-12 sm:w-2/3 ">
       <h1
         className={`mt-2 cursor-pointer text-[${basicText.font_size}] font-[${basicText.font_weight}] text-${basicText.alignment} text-[${basicText.color}] cursor-default`}
         onClick={() => setShow(!show)}
