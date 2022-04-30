@@ -1,9 +1,10 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Clerkie-App</title>
         <meta name="description" content="This is my portfolio" />
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <Component {...pageProps} />
-    </>
+    </Layout>
   );
 }
 
