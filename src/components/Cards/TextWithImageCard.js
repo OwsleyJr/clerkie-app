@@ -29,7 +29,7 @@ const TextWithImage = () => {
     <>
       {Object.keys(json).length > 0 && compHeight && (
         <div
-          className={`w-96 h-${compHeight} mb-12 rounded shadow-lg shadow-black px-5 bg-white relative ${
+          className={`w-96 h-${compHeight} rounded shadow-lg shadow-black px-5 bg-white relative ${
             show ? "block" : "hidden"
           }`}
         >

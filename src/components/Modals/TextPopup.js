@@ -19,11 +19,11 @@ const TextPopup = (props) => {
       <div className={`py-8 ${popupShow ? "block" : "hidden"}`}>
         <div
           role="alert"
-          className="container mx-auto w-11/12 md:w-2/3 max-w-lg flex justify-center"
+          className="mx-auto w-11/12 md:w-2/3 max-w-lg flex justify-center"
         >
-          <div className="relative w-11/12 sm:w-8/12 md:w-9/12  bg-gray-800 shadow  pt-10 pb-8 rounded">
+          <div className="relative w-11/12 sm:w-8/12 md:w-9/12 bg-gray-800 shadow pt-10 pb-8 rounded">
             <div className="flex flex-col items-center px-4 md:px-12">
-              <p className="text-base sm:text-lg md:text-2xl font-bold   text-gray-100 text-center">
+              <p className="text-base sm:text-lg md:text-2xl font-bold text-gray-100 text-center">
                 {clickData[0].text}
               </p>
             </div>
