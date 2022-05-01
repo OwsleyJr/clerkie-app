@@ -1,8 +1,12 @@
 import React from "react";
-import spacing from "../../../spacing.json";
+import styled from "styled-components";
 
-const SpacingCard = () => {
-  return <div className={`h-${spacing.height}`}></div>;
+const SpacingCard = (props) => {
+  return <Spacing spacingData={props.spacingData} />;
 };
 
 export default SpacingCard;
+
+const Spacing = styled.div`
+  height: ${(props) => props.spacingData.height}px;
+`;

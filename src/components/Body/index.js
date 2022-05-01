@@ -7,17 +7,17 @@ import styled from "styled-components";
 import clerkieData from "../../../clerkieData.json";
 
 const Body = () => {
-  // const [jsonData, setJsonData] = useState([]);
+  const [spacingData, setSpacingData] = useState([]);
 
-  // useEffect(() => {
-  //   const returnedData = clerkieData.filter((data) => {
-  //     return data.type === "text";
-  //   });
+  useEffect(() => {
+    const returnedData = clerkieData.filter((data) => {
+      return data.type === "space";
+    });
 
-  //   setJsonData(returnedData);
-  // }, []);
+    setSpacingData(returnedData);
+  }, []);
 
-  // console.log(jsonData);
+  console.log("SPACING DATA ----", spacingData);
 
   return (
     <Container>
@@ -26,15 +26,15 @@ const Body = () => {
         .map((cardData, idx) => {
           return <TextWithImage key={idx} cardData={cardData} />;
         })}
-      {/* <SpacingCard /> */}
+      <SpacingCard spacingData={spacingData[0]} />
       {clerkieData
         .filter((card) => card.type === "text")
         .map((cardData, idx) => {
           return <Text key={idx} cardData={cardData} />;
         })}
-      {/*
-          <SpacingCard />
-          */}
+
+      <SpacingCard spacingData={spacingData[1]} />
+
       {clerkieData
         .filter((card) => card.type === "image")
         .map((cardData, idx) => {
