@@ -8,5 +8,5 @@ const SpacingCard = (props) => {
 export default SpacingCard;
 
 const Spacing = styled.div`
-  height: ${(props) => props.spacingData.height}px;
+  height: ${(props) => (props.spacingData ? props.spacingData.height : "10")}px;
 `;

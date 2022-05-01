@@ -6,16 +6,17 @@ const Text = (props) => {
   const [show, setShow] = useState(false);
 
   return (
-    <CardContainer>
-      <ActualText onClick={() => setShow(true)} cardData={props.cardData}>
-        {props.cardData.text}
-      </ActualText>
+    <>
+      <CardContainer>
+        <ActualText cardData={props.cardData}>{props.cardData.text}</ActualText>
+        <Button onClick={() => setShow(true)}>Popup</Button>
+      </CardContainer>
       <TextPopup
         show={show}
         hidePopup={() => setShow(false)}
         cardData={props.cardData.click_action_data}
       />
-    </CardContainer>
+    </>
   );
 };
 
@@ -23,6 +24,7 @@ export default Text;
 
 const CardContainer = styled.div`
   display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: 5px;
   width: 450px;
@@ -30,12 +32,25 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 5;
+  cursor: pointer;
 `;
 
 const ActualText = styled.p`
   font-size: ${(props) => props.cardData.font_size}px;
   font-weight: ${(props) => props.cardData.font_weight};
   color: ${(props) => props.cardData.color};
-  cursor: pointer;
+`;
+
+const Button = styled.button`
+  background-color: #0a3066;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;

@@ -4,25 +4,22 @@ import Link from "next/link";
 import useTheme from "../../../hooks/useTheme";
 import Icon from "../../Icon";
 
-export const links = ["home", "about", "contact"];
+export const links = [
+  { name: "Home", to: "/", id: 1 },
+  { name: "About", to: "/about", id: 2 },
+  { name: "Contact", to: "/contact", id: 3 },
+];
 
 const DesktopNavLinks = () => {
-  const [theme, toggleTheme] = useTheme();
-
   return (
     <NavLinksWrapper className="nav-links">
-      {links.map((link) => (
-        <li key={link}>
-          <NavLink href={`/${link}`} className="link">
-            {link}
+      {links.map(({ name, to, id }) => (
+        <li key={id}>
+          <NavLink href={`/${to}`} className="link">
+            {name}
           </NavLink>
         </li>
       ))}
-      <li>
-        <button onClick={toggleTheme}>
-          <Icon name={theme === "dark" ? "day" : "night"} />
-        </button>
-      </li>
     </NavLinksWrapper>
   );
 };
@@ -30,16 +27,10 @@ const DesktopNavLinks = () => {
 export default DesktopNavLinks;
 
 const NavLinksWrapper = styled.ul`
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
   list-style: none;
-  li:not(:last-child) {
-    margin-right: 26px;
-  }
-  li:last-child {
-    margin-left: auto;
+  li {
+    padding: 5px;
   }
   button {
     background: transparent;

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import TextPopup from "../Modals/TextPopup";
 
 const TextWithImage = (props) => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(5);
-  const [show, setShow] = useState(true);
+  const [showCard, setShowCard] = useState(true);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setJson(props.cardData);
@@ -95,7 +97,7 @@ const TextWithImage = (props) => {
       )} */}
       {Object.keys(json).length > 0 && compHeight && (
         <CardContainer
-          className={`${show ? "showContainer" : "hideContainer"}`}
+          className={`${showCard ? "showContainer" : "hideContainer"}`}
         >
           <LeftSide>
             <RoundedImage
@@ -118,7 +120,7 @@ const TextWithImage = (props) => {
               <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
             </RightSide>
           )}
-          <CardDismiss onClick={() => setShow(!show)}>
+          <CardDismiss onClick={() => setShowCard(!show)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               aria-label="Close"
@@ -137,8 +139,14 @@ const TextWithImage = (props) => {
               <line x1={6} y1={6} x2={18} y2={18} />
             </svg>
           </CardDismiss>
+          <Button onClick={() => setShow(true)}>Popup</Button>
         </CardContainer>
       )}
+      <TextPopup
+        show={show}
+        hidePopup={() => setShow(false)}
+        cardData={props.cardData.click_action_data}
+      />
     </>
   );
 };
@@ -154,6 +162,7 @@ const CardContainer = styled.div`
   position: relative;
   flex-direction: row;
   margin-bottom: 20px;
+  align-items: center;
 `;
 
 const LeftSide = styled.div`
@@ -198,4 +207,20 @@ const CardDismiss = styled.div`
   color: black;
   top: 0;
   right: 0;
+`;
+
+const Button = styled.button`
+  background-color: #0a3066;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+  position: absolute;
+  right: 10px;
 `;
