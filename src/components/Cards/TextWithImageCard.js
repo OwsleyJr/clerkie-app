@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
-import textImage from "../../../textimage.json";
 import Image from "next/image";
 import styled from "styled-components";
 
-const TextWithImage = () => {
+const TextWithImage = (props) => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(5);
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    setJson(textImage);
-  }, []);
+    setJson(props.cardData);
+  }, [props.cardData]);
 
   useEffect(() => {
-    if (textImage.height) {
-      setCompHeight(textImage.height);
+    if (props.cardData.height) {
+      setCompHeight(props.cardData.height);
     } else {
-      const newHeight =
-        parseInt(textImage.title.font_size) +
-        5 +
-        parseInt(textImage.subtitle.font_size);
-      setCompHeight(newHeight);
+      if (props.cardData.subtitle.font_size) {
+        const newHeight =
+          parseInt(props.cardData.title.font_size) +
+          5 +
+          parseInt(props.cardData.subtitle.font_size);
+        setCompHeight(newHeight);
+      }
     }
-  }, []);
+  }, [props.cardData]);
 
-  //   console.log("THIS IS THE COMP HEIGHT", json.subtitle.color);
+  console.log("THIS IS THE TEXTWITHIMAGECARD", props.cardData);
 
   return (
     <>
@@ -100,19 +101,21 @@ const TextWithImage = () => {
             <RoundedImage
               src={json.image.src}
               alt="Rounded Image"
-              width={100}
+              width={compHeight}
               height={compHeight}
             ></RoundedImage>
           </LeftSide>
           {json.subtitle !== undefined ||
           (json.subtitle !== undefined && json.subtitle.text.length > 0) ? (
             <RightSide>
-              <CardTitle>{json.title.text}</CardTitle>
-              <CardSubtitle>{json.subtitle.text}</CardSubtitle>
+              <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
+              <CardSubtitle cardData={props.cardData}>
+                {json.subtitle.text}
+              </CardSubtitle>
             </RightSide>
           ) : (
             <RightSide>
-              <CardTitle>{json.title.text}</CardTitle>
+              <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
             </RightSide>
           )}
           <CardDismiss onClick={() => setShow(!show)}>
@@ -150,6 +153,7 @@ const CardContainer = styled.div`
   height: auto;
   position: relative;
   flex-direction: row;
+  margin-bottom: 20px;
 `;
 
 const LeftSide = styled.div`
@@ -174,15 +178,18 @@ const RoundedImage = styled(Image)`
 `;
 
 const CardTitle = styled.h2`
-  font-size: ${textImage.title.font_size}px;
-  font-weight: ${textImage.title.font_weight};
-  color: ${textImage.title.color};
+  font-size: ${(props) => props.cardData.title.font_size}px;
+  font-weight: ${(props) => props.cardData.title.font_weight};
+  color: ${(props) => props.cardData.title.color};
 `;
 
 const CardSubtitle = styled.p`
-  font-size: ${textImage.subtitle ? textImage.subtitle.font_size : 0}px;
-  font-weight: ${textImage.subtitle ? textImage.subtitle.font_weight : 0};
-  color: ${textImage.subtitle ? textImage.subtitle.color : "white"};
+  font-size: ${(props) =>
+    props.cardData.subtitle ? props.cardData.subtitle.font_size : 0}px;
+  font-weight: ${(props) =>
+    props.cardData.subtitle ? props.cardData.subtitle.font_weight : 0};
+  color: ${(props) =>
+    props.cardData.subtitle ? props.cardData.subtitle.color : "white"};
 `;
 
 const CardDismiss = styled.div`

@@ -1,0 +1,90 @@
+[
+  {
+    "type": "space",
+    "height": 15
+  },
+  {
+    "type": "text",
+    "text": "Welcome!",
+    "font_size": "20",
+    "font_weight": "bold",
+    "alignment": "center",
+    "color": "black",
+    "click_action_data": {
+      "data": [
+        {
+          "type": "text",
+          "text": "This is my popup!",
+          "click_action": "dismiss"
+        }
+      ]
+    }
+  },
+  {
+    "type": "space",
+    "height": 30
+  },
+  {
+    "type": "text_with_image",
+    "title": {
+      "text": "Test Popup",
+      "font_size": "14",
+      "font_weight": "normal",
+      "color": "black"
+    },
+    "subtitle": {
+      "text": "Subtitle",
+      "font_size": "12",
+      "font_weight": "normal",
+      "color": "gray"
+    },
+
+    "image": {
+      "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+    },
+    "height": 100,
+    "click_action": "present_popup",
+    "click_action_data": {
+      "data": [
+        {
+          "type": "image",
+          "h2w_ratio": 1.0,
+          "width_percent": 0.5,
+          "view_alignment": "center",
+          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "click_action": "dismiss"
+        }
+      ]
+    }
+  },
+  {
+    "type": "space",
+    "height": 15
+  },
+  {
+    "type": "text_with_image",
+    "title": {
+      "text": "Test Fullscreen",
+      "font_size": "14",
+      "font_weight": "normal",
+      "color": "black"
+    },
+    "image": {
+      "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+    },
+    "height": 80,
+    "click_action": "present_fullscreen",
+    "click_action_data": {
+      "data": [
+        {
+          "type": "image",
+          "h2w_ratio": 1.0,
+          "width_percent": 0.5,
+          "view_alignment": "center",
+          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "click_action": "dismiss"
+        }
+      ]
+    }
+  }
+]
