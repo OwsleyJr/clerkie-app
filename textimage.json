@@ -2,19 +2,19 @@
   "type": "text_with_image",
   "title": {
     "text": "Title",
-    "font_size": "14",
+    "font_size": "18",
     "font_weight": "normal",
     "color": "black"
   },
   "subtitle": {
     "text": "Subtitle",
-    "font_size": "12",
+    "font_size": "14",
     "font_weight": "normal",
     "color": "gray"
   },
   "image": {
     "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
   },
-  "height": 20,
+  "height": 100,
   "click_action": "dismiss"
 }
