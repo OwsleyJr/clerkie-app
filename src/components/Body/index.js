@@ -5,7 +5,6 @@ import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import styled from "styled-components";
 import clerkieData from "../../../clerkieData.json";
-import { data } from "autoprefixer";
 
 const Body = () => {
   // const [jsonData, setJsonData] = useState([]);
@@ -35,7 +34,12 @@ const Body = () => {
         })}
       {/*
           <SpacingCard />
-          <ImageCard /> */}
+          */}
+      {clerkieData
+        .filter((card) => card.type === "image")
+        .map((cardData, idx) => {
+          return <ImageCard key={idx} cardData={cardData} />;
+        })}
     </Container>
   );
 };

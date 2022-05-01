@@ -5,19 +5,7 @@ import styled from "styled-components";
 const Text = (props) => {
   const [show, setShow] = useState(false);
 
-  console.log("TEXT CARD DATA", show);
-
   return (
-    // <div className="w-11/12 sm:w-2/3">
-    //   <h1
-    //     className={`mt-2 cursor-pointer text-[${basicText.font_size}] font-[${basicText.font_weight}] text-${basicText.alignment} text-[${basicText.color}] cursor-default`}
-    //     onClick={() => setShow(!show)}
-    //   >
-    //     {basicText.text}
-    //   </h1>
-    //   <TextPopup className={`${show ? "block" : "hidden"}`} show={show} />
-    // </div>
-
     <CardContainer>
       <ActualText onClick={() => setShow(true)} cardData={props.cardData}>
         {props.cardData.text}
