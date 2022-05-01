@@ -2,12 +2,25 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import TextPopup from "../Modals/TextPopup";
+import ImagePopup from "../Modals/ImagePopup";
 
 const TextWithImage = (props) => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(5);
   const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
+
+  // const [clickData, setClickData] = useState([]);
+
+  // useEffect(() => {
+  //   if (props.cardData.click_action_data) {
+  //     setClickData(
+  //       props.cardData.click_action_data.data.map((data) => {
+  //         return data;
+  //       })
+  //     );
+  //   }
+  // }, [props.cardData]);
 
   useEffect(() => {
     setJson(props.cardData);
@@ -27,77 +40,19 @@ const TextWithImage = (props) => {
     }
   }, [props.cardData]);
 
-  console.log("THIS IS THE TEXTWITHIMAGECARD", props.cardData);
+  // console.log(
+  //   "THIS IS THE TEXTWITHIMAGECARD",
+  //   props.cardData.click_action_data.data[0]
+  // );
 
   return (
     <>
-      {/* {Object.keys(json).length > 0 && compHeight && (
-        <div
-          className={`w-96 h-${compHeight} rounded shadow-lg shadow-black px-5 bg-white relative ${
-            show ? "block" : "hidden"
-          }`}
-        >
-          <div className="flex items-center mb-4 mr-10 h-full">
-            <div className={`w-${compHeight} h-full mr-3 relative`}>
-              <Image
-                src={json.image.src}
-                className="rounded-full overflow-hidden shadow"
-                layout="fill"
-                alt="Rounded Image"
-              />
-            </div>
-            {json.subtitle !== undefined ||
-            (json.subtitle !== undefined && json.subtitle.text.length > 0) ? (
-              <div>
-                <p
-                  className={`text-[${json.title.font_size}px] font-[${json.title.font_weight}] text-[${json.title.color}]`}
-                >
-                  {json.title.text}
-                </p>
-
-                <p
-                  className={`text-[${json.subtitle.font_size}] font-[${json.subtitle.font_weight}] text-[${json.subtitle.color}]`}
-                >
-                  {json.subtitle.text}
-                </p>
-                <div
-                  className="cursor-pointer absolute text-gray-800 transition duration-150 ease-in-out top-0 right-0"
-                  onClick={() => setShow(!show)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-label="Close"
-                    className="icon icon-tabler icon-tabler-x"
-                    width={20}
-                    height={20}
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1={18} y1={6} x2={6} y2={18} />
-                    <line x1={6} y1={6} x2={18} y2={18} />
-                  </svg>
-                </div>
-              </div>
-            ) : (
-              <div>
-                <p
-                  className={`text-[${json.title.font_size}] font-[${json.title.font_weight}] leading-5 text-[${json.title.color}]`}
-                >
-                  {json.title.text}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      )} */}
       {Object.keys(json).length > 0 && compHeight && (
         <CardContainer
           className={`${showCard ? "showContainer" : "hideContainer"}`}
+          onClick={() =>
+            props.cardData.click_action_data ? setShow(true) : null
+          }
         >
           <LeftSide>
             <RoundedImage
@@ -139,16 +94,22 @@ const TextWithImage = (props) => {
               <line x1={6} y1={6} x2={18} y2={18} />
             </svg>
           </CardDismiss>
-          {props.cardData.click_action_data && (
-            <Button onClick={() => setShow(true)}>Popup</Button>
-          )}
         </CardContainer>
       )}
-      <TextPopup
-        show={show}
-        hidePopup={() => setShow(false)}
-        cardData={props.cardData.click_action_data}
-      />
+      {props.cardData.click_action_data &&
+      props.cardData.click_action_data.data[0].type === "text" ? (
+        <TextPopup
+          show={show}
+          hidePopup={() => setShow(false)}
+          cardData={props.cardData.click_action_data}
+        />
+      ) : (
+        <ImagePopup
+          show={show}
+          hidePopup={() => setShow(false)}
+          cardData={props.cardData.click_action_data}
+        />
+      )}
     </>
   );
 };
@@ -165,6 +126,13 @@ const CardContainer = styled.div`
   flex-direction: row;
   margin-bottom: 20px;
   align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const LeftSide = styled.div`

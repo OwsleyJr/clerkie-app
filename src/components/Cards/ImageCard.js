@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import TextPopup from "../Modals/TextPopup";
+import ImagePopup from "../Modals/ImagePopup";
 
 const ImageCard = (props) => {
   const [showCard, setShowCard] = useState(true);
@@ -13,6 +14,9 @@ const ImageCard = (props) => {
     <>
       <CardContainer
         className={`${showCard ? "showContainer" : "hideContainer"}`}
+        onClick={() =>
+          props.cardData.click_action_data ? setShow(true) : null
+        }
       >
         <ImageContainer>
           <RoundedImage
@@ -21,9 +25,6 @@ const ImageCard = (props) => {
             layout="fill"
           />
         </ImageContainer>
-        {props.cardData.click_action_data && (
-          <Button onClick={() => setShow(true)}>Popup</Button>
-        )}
         <CardDismiss onClick={() => setShowCard(!show)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,11 +45,20 @@ const ImageCard = (props) => {
           </svg>
         </CardDismiss>
       </CardContainer>
-      <TextPopup
-        show={show}
-        hidePopup={() => setShow(false)}
-        cardData={props.cardData.click_action_data}
-      />
+      {props.cardData.click_action_data &&
+      props.cardData.click_action_data.data[0].type === "text" ? (
+        <TextPopup
+          show={show}
+          hidePopup={() => setShow(false)}
+          cardData={props.cardData.click_action_data}
+        />
+      ) : (
+        <ImagePopup
+          show={show}
+          hidePopup={() => setShow(false)}
+          cardData={props.cardData.click_action_data}
+        />
+      )}
     </>
   );
 };
@@ -65,6 +75,13 @@ const CardContainer = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -81,7 +98,6 @@ const ImageContainer = styled.div`
 const RoundedImage = styled(Image)`
   border: 1px solid #ccc;
   padding: 5px;
-  z-index: 5;
 `;
 
 const CardDismiss = styled.div`

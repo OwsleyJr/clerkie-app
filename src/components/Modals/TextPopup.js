@@ -2,27 +2,29 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const TextPopup = (props) => {
-  const [clickData, setClickData] = useState([]);
+  //   const [clickData, setClickData] = useState([]);
 
-  useEffect(() => {
-    if (props.cardData) {
-      setClickData(
-        props.cardData.data.map((data) => {
-          return data;
-        })
-      );
-    }
-  }, [props.cardData]);
+  //   useEffect(() => {
+  //     if (props.cardData) {
+  //       setClickData(
+  //         props.cardData.data.map((data) => {
+  //           return data;
+  //         })
+  //       );
+  //     }
+  //   }, [props.cardData]);
 
   //   console.log("POP UP DATA", clickData[0]);
 
   return (
     <>
-      {clickData.length > 0 && (
+      {props.cardData && (
         <CardContainer
           className={`${props.show ? "showContainer" : "hideContainer"}`}
         >
-          <ActualText cardData={props.cardData}>{clickData[0].text}</ActualText>
+          <ActualText cardData={props.cardData.data[0]}>
+            {props.cardData.data[0].text}
+          </ActualText>
 
           <CardDismiss onClick={() => props.hidePopup()}>
             <svg
@@ -56,11 +58,10 @@ const CardContainer = styled.div`
   background-color: black;
   border-radius: 5px;
   width: 250px;
-  margin-bottom: 20px;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  z-index: 7;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;
 

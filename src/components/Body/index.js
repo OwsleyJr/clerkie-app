@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TextWithImage from "../Cards/TextWithImageCard";
 import Text from "../Cards/TextCard";
 import ImageCard from "../Cards/ImageCard";
@@ -7,39 +7,22 @@ import styled from "styled-components";
 import clerkieData from "../../../clerkieData.json";
 
 const Body = () => {
-  const [spacingData, setSpacingData] = useState([]);
-
-  useEffect(() => {
-    const returnedData = clerkieData.filter((data) => {
-      return data.type === "space";
-    });
-
-    setSpacingData(returnedData);
-  }, []);
-
-  console.log("SPACING DATA ----", spacingData);
-
   return (
     <Container>
-      {clerkieData
-        .filter((card) => card.type === "text_with_image")
-        .map((cardData, idx) => {
+      {clerkieData.map((cardData, idx) => {
+        if (cardData.type === "text_with_image") {
           return <TextWithImage key={idx} cardData={cardData} />;
-        })}
-      <SpacingCard spacingData={spacingData[0]} />
-      {clerkieData
-        .filter((card) => card.type === "text")
-        .map((cardData, idx) => {
+        }
+        if (cardData.type === "text") {
           return <Text key={idx} cardData={cardData} />;
-        })}
-
-      <SpacingCard spacingData={spacingData[1]} />
-
-      {clerkieData
-        .filter((card) => card.type === "image")
-        .map((cardData, idx) => {
+        }
+        if (cardData.type === "image") {
           return <ImageCard key={idx} cardData={cardData} />;
-        })}
+        }
+        if (cardData.type === "space") {
+          return <SpacingCard key={idx} cardData={cardData} />;
+        }
+      })}
     </Container>
   );
 };
