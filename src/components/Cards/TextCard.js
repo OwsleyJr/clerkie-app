@@ -9,7 +9,9 @@ const Text = (props) => {
     <>
       <CardContainer>
         <ActualText cardData={props.cardData}>{props.cardData.text}</ActualText>
-        <Button onClick={() => setShow(true)}>Popup</Button>
+        {props.cardData.click_action_data && (
+          <Button onClick={() => setShow(true)}>Popup</Button>
+        )}
       </CardContainer>
       <TextPopup
         show={show}

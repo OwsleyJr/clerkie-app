@@ -139,7 +139,9 @@ const TextWithImage = (props) => {
               <line x1={6} y1={6} x2={18} y2={18} />
             </svg>
           </CardDismiss>
-          <Button onClick={() => setShow(true)}>Popup</Button>
+          {props.cardData.click_action_data && (
+            <Button onClick={() => setShow(true)}>Popup</Button>
+          )}
         </CardContainer>
       )}
       <TextPopup
