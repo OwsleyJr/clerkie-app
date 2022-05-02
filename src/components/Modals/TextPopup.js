@@ -60,6 +60,7 @@ const CardContainer = styled.div`
   justify-content: center;
   position: fixed;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+  z-index: 7;
 `;
 
 const ActualText = styled.p`

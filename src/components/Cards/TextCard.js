@@ -1,21 +1,45 @@
-import React, { useState } from "react";
-import TextPopup from "../Modals/TextPopup";
+import React, { useState, useEffect } from "react";
+import Popup from "../Modals/Popup";
 import styled from "styled-components";
 
 const Text = (props) => {
   const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
 
+  const [compHeight, setCompHeight] = useState(100);
+
+  useEffect(() => {
+    if (props.cardData.height) {
+      setCompHeight(props.cardData.height);
+    } else {
+      if (props.cardData.subtitle) {
+        const newHeight =
+          parseInt(props.cardData.title.font_size) +
+          5 +
+          parseInt(props.cardData.subtitle.font_size);
+        setCompHeight(newHeight);
+      }
+    }
+  }, [props.cardData]);
+
+  console.log("TEXT CARD", props);
+
   return (
     <>
       <CardContainer
+        cardData={props.cardData}
+        compHeight={props.compHeight}
         className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
           props.cardData.click_action_data ? setShow(true) : setShow(false)
         }
       >
-        <ActualText cardData={props.cardData}>{props.cardData.text}</ActualText>
-        <CardDismiss onClick={() => setShowCard(!show)}>
+        <TextContainer cardData={props.cardData}>
+          <ActualText cardData={props.cardData}>
+            {props.cardData.text}
+          </ActualText>
+        </TextContainer>
+        {/* <CardDismiss onClick={() => setShowCard(!show)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-label="Close"
@@ -33,13 +57,16 @@ const Text = (props) => {
             <line x1={18} y1={6} x2={6} y2={18} />
             <line x1={6} y1={6} x2={18} y2={18} />
           </svg>
-        </CardDismiss>
+        </CardDismiss> */}
       </CardContainer>
-      <TextPopup
-        show={show}
-        hidePopup={() => setShow(false)}
-        cardData={props.cardData.click_action_data}
-      />
+
+      {props.cardData.click_action_data && (
+        <Popup
+          show={show}
+          hidePopup={() => setShow(false)}
+          cardData={props.cardData.click_action_data}
+        />
+      )}
     </>
   );
 };
@@ -48,15 +75,14 @@ export default Text;
 
 const CardContainer = styled.div`
   display: flex;
-  flex-direction: column;
   background-color: white;
   border-radius: 5px;
-  width: 450px;
-  margin-bottom: 20px;
+  width: 100%;
+  height: ${(props) => props.compHeight}px;
+  margin: 0px 15px 0px 15px;
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transform: scale(1);
@@ -66,10 +92,21 @@ const CardContainer = styled.div`
   }
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
+  align-items: center;
+  justify-content: center;
+  text-align: ${(props) => props.cardData.view_alignment};
+`;
+
 const ActualText = styled.p`
-  font-size: ${(props) => props.cardData.font_size}px;
-  font-weight: ${(props) => props.cardData.font_weight};
-  color: ${(props) => props.cardData.color};
+  font-size: ${(props) =>
+    props.cardData.font_size ? props.cardData.font_size : "14"}px;
+  font-weight: ${(props) =>
+    props.cardData.font_weight ? props.cardData.font_weight : "normal"};
+  color: ${(props) => (props.cardData.color ? props.cardData.color : "black")};
+  text-align: ${(props) => props.cardData.alignment};
 `;
 
 const CardDismiss = styled.div`

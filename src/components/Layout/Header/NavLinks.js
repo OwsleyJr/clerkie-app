@@ -15,7 +15,7 @@ const DesktopNavLinks = () => {
     <NavLinksWrapper className="nav-links">
       {links.map(({ name, to, id }) => (
         <li key={id}>
-          <NavLink href={`/${to}`} className="link">
+          <NavLink href={to} className="link">
             {name}
           </NavLink>
         </li>

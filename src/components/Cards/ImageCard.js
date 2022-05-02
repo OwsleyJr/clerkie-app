@@ -1,31 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import TextPopup from "../Modals/TextPopup";
 import ImagePopup from "../Modals/ImagePopup";
+import Popup from "../Modals/Popup";
 
 const ImageCard = (props) => {
   const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
 
-  console.log("IMAGE CARD DATA", props);
+  const [compHeight, setCompHeight] = useState(150);
+
+  useEffect(() => {
+    if (props.cardData.height) {
+      setCompHeight(props.cardData.height);
+    }
+  }, [props.cardData]);
+
+  console.log("IMAGE CARD", Math.round(props.cardData.width_percent * 100));
 
   return (
     <>
       <CardContainer
+        compHeight={compHeight}
+        cardData={props.cardData}
         className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
           props.cardData.click_action_data ? setShow(true) : setShow(false)
         }
       >
-        <ImageContainer>
+        <ImageContainer cardData={props.cardData}>
           <RoundedImage
             src={props.cardData.src}
             alt="Full Image"
             layout="fill"
           />
         </ImageContainer>
-        <CardDismiss onClick={() => setShowCard(!show)}>
+        {/* <CardDismiss onClick={() => setShowCard(!show)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-label="Close"
@@ -43,17 +54,11 @@ const ImageCard = (props) => {
             <line x1={18} y1={6} x2={6} y2={18} />
             <line x1={6} y1={6} x2={18} y2={18} />
           </svg>
-        </CardDismiss>
+        </CardDismiss> */}
       </CardContainer>
-      {props.cardData.click_action_data &&
-      props.cardData.click_action_data.data[0].type === "text" ? (
-        <TextPopup
-          show={show}
-          hidePopup={() => setShow(false)}
-          cardData={props.cardData.click_action_data}
-        />
-      ) : (
-        <ImagePopup
+
+      {props.cardData.click_action_data && (
+        <Popup
           show={show}
           hidePopup={() => setShow(false)}
           cardData={props.cardData.click_action_data}
@@ -66,15 +71,13 @@ const ImageCard = (props) => {
 export default ImageCard;
 
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   background-color: white;
+  margin: 0px 15px 0px 15px;
+  aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
-  height: 200px;
-  margin-bottom: 20px;
+  height: ${(props) => props.compHeight}px;
+  width: auto;
   position: relative;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transform: scale(1);
@@ -87,12 +90,10 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   margin-left: 20px;
   margin-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 200px;
-  position: relative;
+  height: 100%;
+  width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
+  position: absolute;
+  text-align: ${(props) => props.cardData.view_alignment};
 `;
 
 const RoundedImage = styled(Image)`

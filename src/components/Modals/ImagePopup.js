@@ -63,8 +63,9 @@ const CardContainer = styled.div`
   width: 250px;
   align-items: center;
   justify-content: center;
+  padding: 5px;
   position: fixed;
-  z-index: 5;
+  z-index: 7;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import TextPopup from "../Modals/TextPopup";
-import ImagePopup from "../Modals/ImagePopup";
+import Popup from "../Modals/Popup";
 
 const TextWithImage = (props) => {
   const [json, setJson] = useState({});
@@ -30,7 +29,7 @@ const TextWithImage = (props) => {
     if (props.cardData.height) {
       setCompHeight(props.cardData.height);
     } else {
-      if (props.cardData.subtitle.font_size) {
+      if (props.cardData.subtitle) {
         const newHeight =
           parseInt(props.cardData.title.font_size) +
           5 +
@@ -40,15 +39,14 @@ const TextWithImage = (props) => {
     }
   }, [props.cardData]);
 
-  // console.log(
-  //   "THIS IS THE TEXTWITHIMAGECARD",
-  //   props.cardData.click_action_data.data[0]
-  // );
+  console.log("THIS IS THE TEXTWITHIMAGECARD", props.cardData.title);
 
   return (
     <>
       {Object.keys(json).length > 0 && compHeight && (
         <CardContainer
+          cardData={props.cardData}
+          compHeight={compHeight}
           className={`${showCard ? "showCard" : "hideCard"}`}
           onClick={() =>
             props.cardData.click_action_data ? setShow(true) : setShow(false)
@@ -64,18 +62,18 @@ const TextWithImage = (props) => {
           </LeftSide>
           {json.subtitle !== undefined ||
           (json.subtitle !== undefined && json.subtitle.text.length > 0) ? (
-            <RightSide>
+            <RightSide cardData={props.cardData}>
               <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
               <CardSubtitle cardData={props.cardData}>
                 {json.subtitle.text}
               </CardSubtitle>
             </RightSide>
           ) : (
-            <RightSide>
+            <RightSide cardData={props.cardData}>
               <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
             </RightSide>
           )}
-          <CardDismiss onClick={() => setShowCard(!show)}>
+          {/* <CardDismiss onClick={() => setShowCard(!show)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               aria-label="Close"
@@ -93,18 +91,11 @@ const TextWithImage = (props) => {
               <line x1={18} y1={6} x2={6} y2={18} />
               <line x1={6} y1={6} x2={18} y2={18} />
             </svg>
-          </CardDismiss>
+          </CardDismiss> */}
         </CardContainer>
       )}
-      {props.cardData.click_action_data &&
-      props.cardData.click_action_data.data[0].type === "text" ? (
-        <TextPopup
-          show={show}
-          hidePopup={() => setShow(false)}
-          cardData={props.cardData.click_action_data}
-        />
-      ) : (
-        <ImagePopup
+      {props.cardData.click_action_data && (
+        <Popup
           show={show}
           hidePopup={() => setShow(false)}
           cardData={props.cardData.click_action_data}
@@ -120,11 +111,11 @@ const CardContainer = styled.div`
   display: flex;
   background-color: white;
   border-radius: 5px;
-  width: 450px;
+  width: 100%;
   height: auto;
   position: relative;
   flex-direction: row;
-  margin-bottom: 20px;
+  margin: 0px 15px 0px 15px;
   align-items: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -145,9 +136,8 @@ const LeftSide = styled.div`
 
 const RightSide = styled.div`
   display: flex;
-  align-items: center;
+  text-align: ${(props) => props.cardData.title.view_alignment};
   flex-direction: column;
-  justify-content: center;
 `;
 
 const RoundedImage = styled(Image)`
@@ -160,6 +150,7 @@ const CardTitle = styled.h2`
   font-size: ${(props) => props.cardData.title.font_size}px;
   font-weight: ${(props) => props.cardData.title.font_weight};
   color: ${(props) => props.cardData.title.color};
+  text-align: ${(props) => props.cardData.title.alignment};
 `;
 
 const CardSubtitle = styled.p`

@@ -33,6 +33,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80pt;
-  margin: 0px 15px 0px 15px;
+  justify-content: center;
+  margin: auto;
+  width: 50%;
 `;
