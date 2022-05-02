@@ -122,12 +122,15 @@ const CardContainer = styled.div`
   margin: 0px 15px 0px 15px;
   padding: 4px 0px 4px 0px;
   align-items: center;
-  cursor: pointer;
+  cursor: ${(props) =>
+    props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
   transform: scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transform: scale(1.05);
+    transform: scale(
+      ${(props) => (props.cardData.click_action_data ? 1.05 : 1)}
+    );
   }
 `;
 

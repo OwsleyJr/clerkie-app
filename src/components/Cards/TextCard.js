@@ -19,7 +19,7 @@ const Text = (props) => {
     }
   }, [props.cardData]);
 
-  // console.log("TEXT CARD", compHeight);
+  console.log("TEXT CARD", props);
 
   return (
     <>
@@ -80,12 +80,15 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
+  cursor: ${(props) =>
+    props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
   transform: scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transform: scale(1.05);
+    transform: scale(
+      ${(props) => (props.cardData.click_action_data ? 1.05 : 1)}
+    );
   }
 `;
 

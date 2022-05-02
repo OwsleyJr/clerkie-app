@@ -2,11 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export const links = [
-  { name: "Home", to: "/", id: 1 },
-  { name: "About", to: "/about", id: 2 },
-  { name: "Contact", to: "/contact", id: 3 },
-];
+export const links = [{ name: "Home", to: "/", id: 1 }];
 
 const DesktopNavLinks = () => {
   return (
