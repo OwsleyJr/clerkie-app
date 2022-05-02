@@ -9,6 +9,10 @@ function MyApp({ Component, pageProps }) {
         <title>Clerkie-App</title>
         <meta name="description" content="This is my portfolio" />
         <meta
+          name="viewport"
+          content="initial-scale=1, viewport-fit=cover, width=device-width"
+        ></meta>
+        <meta
           property="og:site_name"
           content="Clerkie-App"
           data-rh="true"

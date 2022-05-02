@@ -15,15 +15,23 @@ a {
   box-sizing: border-box;
 }
 
+@viewport {
+  max-width: 600px;
+}
+
 .showPopup {
+  display: block;
   visibility: visible;
   opacity: 1;
   transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
 .hidePopup {
+  max-height: 0%;
+  display: none;
+  overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+  transition: opacity 250ms ease-out, visibility 0ms ease-out 250ms;
 }
 
 .showCard {

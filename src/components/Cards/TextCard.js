@@ -3,7 +3,7 @@ import Popup from "../Modals/Popup";
 import styled from "styled-components";
 
 const Text = (props) => {
-  const [showCard, setShowCard] = useState(true);
+  // const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
 
   const [compHeight, setCompHeight] = useState(100);
@@ -12,24 +12,21 @@ const Text = (props) => {
     if (props.cardData.height) {
       setCompHeight(props.cardData.height);
     } else {
-      if (props.cardData.subtitle) {
-        const newHeight =
-          parseInt(props.cardData.title.font_size) +
-          5 +
-          parseInt(props.cardData.subtitle.font_size);
+      if (props.cardData.font_size) {
+        const newHeight = parseInt(props.cardData.font_size) + 5;
         setCompHeight(newHeight);
       }
     }
   }, [props.cardData]);
 
-  console.log("TEXT CARD", props);
+  // console.log("TEXT CARD", compHeight);
 
   return (
     <>
       <CardContainer
         cardData={props.cardData}
-        compHeight={props.compHeight}
-        className={`${showCard ? "showCard" : "hideCard"}`}
+        compHeight={compHeight}
+        // className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
           props.cardData.click_action_data ? setShow(true) : setShow(false)
         }

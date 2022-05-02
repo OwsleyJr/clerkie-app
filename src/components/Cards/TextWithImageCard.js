@@ -5,8 +5,8 @@ import Popup from "../Modals/Popup";
 
 const TextWithImage = (props) => {
   const [json, setJson] = useState({});
-  const [compHeight, setCompHeight] = useState(5);
-  const [showCard, setShowCard] = useState(true);
+  const [compHeight, setCompHeight] = useState(100);
+  // const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
 
   // const [clickData, setClickData] = useState([]);
@@ -29,7 +29,11 @@ const TextWithImage = (props) => {
     if (props.cardData.height) {
       setCompHeight(props.cardData.height);
     } else {
-      if (props.cardData.subtitle) {
+      if (props.cardData.title) {
+        const newHeight = parseInt(props.cardData.title.font_size) + 5;
+        setCompHeight(newHeight);
+      }
+      if (props.cardData.title && props.cardData.subtitle) {
         const newHeight =
           parseInt(props.cardData.title.font_size) +
           5 +
@@ -39,7 +43,7 @@ const TextWithImage = (props) => {
     }
   }, [props.cardData]);
 
-  console.log("THIS IS THE TEXTWITHIMAGECARD", props.cardData.title);
+  console.log("THIS IS THE TEXTWITHIMAGECARD", compHeight);
 
   return (
     <>
@@ -47,7 +51,7 @@ const TextWithImage = (props) => {
         <CardContainer
           cardData={props.cardData}
           compHeight={compHeight}
-          className={`${showCard ? "showCard" : "hideCard"}`}
+          // className={`${showCard ? "showCard" : "hideCard"}`}
           onClick={() =>
             props.cardData.click_action_data ? setShow(true) : setShow(false)
           }
@@ -116,6 +120,7 @@ const CardContainer = styled.div`
   position: relative;
   flex-direction: row;
   margin: 0px 15px 0px 15px;
+  padding: 4px 0px 4px 0px;
   align-items: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;

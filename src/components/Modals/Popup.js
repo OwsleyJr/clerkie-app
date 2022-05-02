@@ -19,7 +19,7 @@ const Popup = (props) => {
   //     }
   //   }, [props.cardData]);
 
-  console.log("POP UP DATA", props);
+  //   console.log("POP UP DATA", props);
 
   return (
     <>

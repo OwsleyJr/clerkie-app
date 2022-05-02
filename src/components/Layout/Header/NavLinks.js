@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import useTheme from "../../../hooks/useTheme";
-import Icon from "../../Icon";
 
 export const links = [
   { name: "Home", to: "/", id: 1 },
@@ -52,7 +50,6 @@ export const NavLink = styled(Link)`
   color: white;
   text-decoration: none;
   text-transform: capitalize;
-  color: var(--text);
   &::before {
     content: "";
     display: block;
@@ -61,7 +58,6 @@ export const NavLink = styled(Link)`
     bottom: -2px;
     height: 2px;
     width: 0;
-    background: var(--text);
     transition: width 150ms linear;
   }
   &:hover::before {
