@@ -15,14 +15,12 @@ const ImagePopup = (props) => {
   //     }
   //   }, [props.cardData]);
 
-  //   console.log("POP UP DATA", props.cardData.data[0]);
+  console.log("POP UP DATA", props);
 
   return (
     <>
       {props.cardData && (
-        <CardContainer
-          className={`${props.show ? "showContainer" : "hideContainer"}`}
-        >
+        <CardContainer className={`${props.show ? "showPopup" : "hidePopup"}`}>
           <ImageContainer>
             <RoundedImage
               src={props.cardData.data[0].src}
@@ -63,11 +61,10 @@ const CardContainer = styled.div`
   background-color: black;
   border-radius: 5px;
   width: 250px;
-  margin-bottom: 20px;
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;
 
@@ -93,4 +90,5 @@ const CardDismiss = styled.div`
   color: white;
   top: 0;
   right: 0;
+  z-index: 7;
 `;

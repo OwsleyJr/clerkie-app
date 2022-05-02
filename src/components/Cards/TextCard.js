@@ -9,9 +9,9 @@ const Text = (props) => {
   return (
     <>
       <CardContainer
-        className={`${showCard ? "showContainer" : "hideContainer"}`}
+        className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
-          props.cardData.click_action_data ? setShow(true) : null
+          props.cardData.click_action_data ? setShow(true) : setShow(false)
         }
       >
         <ActualText cardData={props.cardData}>{props.cardData.text}</ActualText>

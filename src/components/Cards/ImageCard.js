@@ -13,9 +13,9 @@ const ImageCard = (props) => {
   return (
     <>
       <CardContainer
-        className={`${showCard ? "showContainer" : "hideContainer"}`}
+        className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
-          props.cardData.click_action_data ? setShow(true) : null
+          props.cardData.click_action_data ? setShow(true) : setShow(false)
         }
       >
         <ImageContainer>
@@ -106,7 +106,7 @@ const CardDismiss = styled.div`
   color: black;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 7;
 `;
 
 const Button = styled.button`

@@ -14,14 +14,12 @@ const TextPopup = (props) => {
   //     }
   //   }, [props.cardData]);
 
-  //   console.log("POP UP DATA", clickData[0]);
+  console.log("POP UP DATA", props);
 
   return (
     <>
       {props.cardData && (
-        <CardContainer
-          className={`${props.show ? "showContainer" : "hideContainer"}`}
-        >
+        <CardContainer className={`${props.show ? "showPopup" : "hidePopup"}`}>
           <ActualText cardData={props.cardData.data[0]}>
             {props.cardData.data[0].text}
           </ActualText>
@@ -61,7 +59,6 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 7;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
 `;
 
@@ -77,4 +74,5 @@ const CardDismiss = styled.div`
   color: white;
   top: 0;
   right: 0;
+  z-index: 7;
 `;
