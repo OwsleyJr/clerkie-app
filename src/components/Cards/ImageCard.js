@@ -76,7 +76,6 @@ const CardContainer = styled.div`
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
   height: ${(props) => props.compHeight}px;
-  width: auto;
   position: relative;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};

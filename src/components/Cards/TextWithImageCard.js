@@ -56,12 +56,11 @@ const TextWithImage = (props) => {
             props.cardData.click_action_data ? setShow(true) : setShow(false)
           }
         >
-          <LeftSide>
+          <LeftSide compHeight={compHeight}>
             <RoundedImage
               src={json.image.src}
               alt="Rounded Image"
-              width={compHeight}
-              height={compHeight}
+              layout="fill"
             ></RoundedImage>
           </LeftSide>
           {json.subtitle !== undefined ||
@@ -115,13 +114,12 @@ const CardContainer = styled.div`
   display: flex;
   background-color: white;
   border-radius: 5px;
-  width: 100%;
-  height: auto;
-  position: relative;
+  width: 70%;
   flex-direction: row;
   margin: 0px 15px 0px 15px;
   padding: 4px 0px 4px 0px;
   align-items: center;
+  align-content: center;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
@@ -138,13 +136,16 @@ const LeftSide = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
+  width: ${(props) => props.compHeight}px;
+  height: ${(props) => props.compHeight}px;
 `;
 
 const RightSide = styled.div`
-  display: flex;
   text-align: ${(props) => props.cardData.title.view_alignment};
+  display: flex;
   flex-direction: column;
 `;
 
@@ -159,6 +160,7 @@ const CardTitle = styled.h2`
   font-weight: ${(props) => props.cardData.title.font_weight};
   color: ${(props) => props.cardData.title.color};
   text-align: ${(props) => props.cardData.title.alignment};
+  margin: auto;
 `;
 
 const CardSubtitle = styled.p`
@@ -168,6 +170,7 @@ const CardSubtitle = styled.p`
     props.cardData.subtitle ? props.cardData.subtitle.font_weight : 0};
   color: ${(props) =>
     props.cardData.subtitle ? props.cardData.subtitle.color : "white"};
+  margin: auto;
 `;
 
 const CardDismiss = styled.div`

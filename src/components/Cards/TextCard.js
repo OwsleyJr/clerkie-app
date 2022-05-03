@@ -6,26 +6,26 @@ const Text = (props) => {
   // const [showCard, setShowCard] = useState(true);
   const [show, setShow] = useState(false);
 
-  const [compHeight, setCompHeight] = useState(100);
+  // const [compHeight, setCompHeight] = useState(100);
 
-  useEffect(() => {
-    if (props.cardData.height) {
-      setCompHeight(props.cardData.height);
-    } else {
-      if (props.cardData.font_size) {
-        const newHeight = parseInt(props.cardData.font_size) + 5;
-        setCompHeight(newHeight);
-      }
-    }
-  }, [props.cardData]);
+  // useEffect(() => {
+  //   if (props.cardData.height) {
+  //     setCompHeight(props.cardData.height);
+  //   } else {
+  //     if (props.cardData.font_size) {
+  //       const newHeight = parseInt(props.cardData.font_size) + 5;
+  //       setCompHeight(newHeight);
+  //     }
+  //   }
+  // }, [props.cardData]);
 
-  console.log("TEXT CARD", props);
+  // console.log("TEXT CARD", props);
 
   return (
     <>
       <CardContainer
         cardData={props.cardData}
-        compHeight={compHeight}
+        // compHeight={compHeight}
         // className={`${showCard ? "showCard" : "hideCard"}`}
         onClick={() =>
           props.cardData.click_action_data ? setShow(true) : setShow(false)
@@ -74,8 +74,8 @@ const CardContainer = styled.div`
   display: flex;
   background-color: white;
   border-radius: 5px;
-  width: 100%;
-  height: ${(props) => props.compHeight}px;
+  width: 70%;
+  height: 100%;
   margin: 0px 15px 0px 15px;
   align-items: center;
   justify-content: center;

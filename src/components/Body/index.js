@@ -35,5 +35,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 50%;
+  max-width: 600px;
+  height: auto;
 `;
