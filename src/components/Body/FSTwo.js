@@ -4,15 +4,11 @@ import Text from "../Cards/TextCard";
 import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import styled from "styled-components";
-import clerkieData from "../../../clerkieData.json";
-import { useGlobalContext } from "../../context";
 
-const FSTwo = () => {
-  const { screenSwitcher, secondFullView } = useGlobalContext();
-
+const FSTwo = (props) => {
   return (
     <Container>
-      {clerkieData.map((cardData, idx) => {
+      {props.cardData.click_action_data.data.map((cardData, idx) => {
         if (cardData.type === "text_with_image") {
           return <TextWithImage key={idx} cardData={cardData} />;
         }

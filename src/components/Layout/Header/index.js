@@ -3,11 +3,31 @@ import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import Logo from "../../../assets/clerkieLogo.jpg";
 import Image from "next/image";
+import { useGlobalContext } from "../../../context";
 
 const Header = () => {
+  const { secondFullView, screenSwitcher } = useGlobalContext();
+
   return (
     <HeaderNav>
-      <RoundedImage src={Logo} alt="Clerkie Logo" width={30} height={30} />
+      {secondFullView ? (
+        <SvgContainer onClick={() => screenSwitcher()}>
+          <svg
+            className="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        </SvgContainer>
+      ) : (
+        <RoundedImage src={Logo} alt="Clerkie Logo" width={30} height={30} />
+      )}
       <LinksContainer>
         <NavLinks />
       </LinksContainer>
@@ -22,6 +42,7 @@ const HeaderNav = styled.nav`
   align-items: center;
   justify-content: space-between;
   transition: all 150ms linear;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -47,4 +68,10 @@ const RoundedImage = styled(Image)`
 
 const LinksContainer = styled.div`
   float: right;
+`;
+
+const SvgContainer = styled.div`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;
