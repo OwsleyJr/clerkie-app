@@ -19,7 +19,7 @@ const Body = () => {
     <>
       <Container>
         {clerkieData.map((cardData, idx) => {
-          if (!secondFullView && !popupView) {
+          if (!secondFullView) {
             console.log("INSIDE MAP FUNC", idx);
             if (cardData.type === "text_with_image") {
               return <TextWithImage key={idx} cardData={cardData} id={idx} />;
