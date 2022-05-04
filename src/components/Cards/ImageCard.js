@@ -73,26 +73,3 @@ const SquareImage = styled(Image)`
   border: 1px solid #ccc;
   padding: 5px;
 `;
-
-// const CardDismiss = styled.div`
-//   cursor: pointer;
-//   position: absolute;
-//   color: black;
-//   top: 0;
-//   right: 0;
-//   z-index: 7;
-// `;
-
-// const Button = styled.button`
-//   background-color: #0a3066;
-//   border-radius: 5px;
-//   border: none;
-//   color: white;
-//   padding: 7px 25px;
-//   text-align: center;
-//   text-decoration: none;
-//   display: inline-block;
-//   font-size: 16px;
-//   margin-bottom: 5px;
-//   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
-// `;

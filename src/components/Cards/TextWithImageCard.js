@@ -7,8 +7,7 @@ const TextWithImage = (props) => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(100);
 
-  const { popupSwitcher, screenSwitcher, setViewType, setViewData } =
-    useGlobalContext();
+  const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
 
   useEffect(() => {
     setJson(props.cardData);
@@ -137,28 +136,4 @@ const CardSubtitle = styled.p`
   color: ${(props) =>
     props.cardData.subtitle ? props.cardData.subtitle.color : "white"};
   margin: auto;
-`;
-
-const CardDismiss = styled.div`
-  cursor: pointer;
-  position: absolute;
-  color: black;
-  top: 0;
-  right: 0;
-`;
-
-const Button = styled.button`
-  background-color: #0a3066;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  padding: 7px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
-  position: absolute;
-  right: 10px;
 `;
