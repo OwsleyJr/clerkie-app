@@ -5,25 +5,46 @@ import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import styled from "styled-components";
 import clerkieData from "../../../clerkieData.json";
+import FSTwo from "./FSTwo";
+import Popup from "../Modals/Popup";
+import { useGlobalContext } from "../../context";
 
 const Body = () => {
+  const { secondFullView, popupView, viewData, setViewData, viewType } =
+    useGlobalContext();
+
+  console.log("BODYVIEW", viewData);
+
   return (
-    <Container>
-      {clerkieData.map((cardData, idx) => {
-        if (cardData.type === "text_with_image") {
-          return <TextWithImage key={idx} cardData={cardData} />;
-        }
-        if (cardData.type === "text") {
-          return <Text key={idx} cardData={cardData} />;
-        }
-        if (cardData.type === "image") {
-          return <ImageCard key={idx} cardData={cardData} />;
-        }
-        if (cardData.type === "space") {
-          return <SpacingCard key={idx} cardData={cardData} />;
-        }
-      })}
-    </Container>
+    <>
+      <Container>
+        {clerkieData.map((cardData, idx) => {
+          if (!secondFullView && !popupView) {
+            console.log("INSIDE MAP FUNC", idx);
+            if (cardData.type === "text_with_image") {
+              return <TextWithImage key={idx} cardData={cardData} id={idx} />;
+            }
+            if (cardData.type === "text") {
+              return <Text key={idx} cardData={cardData} />;
+            }
+            if (cardData.type === "image") {
+              return <ImageCard key={idx} cardData={cardData} />;
+            }
+            if (cardData.type === "space") {
+              return <SpacingCard key={idx} cardData={cardData} />;
+            }
+          }
+        })}
+
+        {secondFullView && viewData.click_action === "present_fullscreen" ? (
+          <FSTwo cardData={viewData} />
+        ) : popupView && viewData.click_action === "present_popup" ? (
+          <Popup cardData={viewData} />
+        ) : (
+          ""
+        )}
+      </Container>
+    </>
   );
 };
 

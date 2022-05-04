@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import Popup from "../Modals/Popup";
+import { useGlobalContext } from "../../context";
 
 const TextWithImage = (props) => {
   const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(100);
-  // const [showCard, setShowCard] = useState(true);
-  const [show, setShow] = useState(false);
 
-  // const [clickData, setClickData] = useState([]);
-
-  // useEffect(() => {
-  //   if (props.cardData.click_action_data) {
-  //     setClickData(
-  //       props.cardData.click_action_data.data.map((data) => {
-  //         return data;
-  //       })
-  //     );
-  //   }
-  // }, [props.cardData]);
+  const { popupSwitcher, screenSwitcher, setViewType, setViewData } =
+    useGlobalContext();
 
   useEffect(() => {
     setJson(props.cardData);
@@ -43,7 +32,7 @@ const TextWithImage = (props) => {
     }
   }, [props.cardData]);
 
-  console.log("THIS IS THE TEXTWITHIMAGECARD", compHeight);
+  console.log("THIS IS THE TEXTWITHIMAGECARD", props.id);
 
   return (
     <>
@@ -51,9 +40,12 @@ const TextWithImage = (props) => {
         <CardContainer
           cardData={props.cardData}
           compHeight={compHeight}
-          // className={`${showCard ? "showCard" : "hideCard"}`}
           onClick={() =>
-            props.cardData.click_action_data ? setShow(true) : setShow(false)
+            props.cardData.click_action === "present_fullscreen"
+              ? (screenSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "present_popup"
+              ? (popupSwitcher(), setViewData(props.cardData))
+              : ""
           }
         >
           <LeftSide compHeight={compHeight}>
@@ -76,33 +68,7 @@ const TextWithImage = (props) => {
               <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
             </RightSide>
           )}
-          {/* <CardDismiss onClick={() => setShowCard(!show)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              aria-label="Close"
-              className="icon icon-tabler icon-tabler-x"
-              width={20}
-              height={20}
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" />
-              <line x1={18} y1={6} x2={6} y2={18} />
-              <line x1={6} y1={6} x2={18} y2={18} />
-            </svg>
-          </CardDismiss> */}
         </CardContainer>
-      )}
-      {props.cardData.click_action_data && (
-        <Popup
-          show={show}
-          hidePopup={() => setShow(false)}
-          cardData={props.cardData.click_action_data}
-        />
       )}
     </>
   );
