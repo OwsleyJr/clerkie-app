@@ -70,6 +70,7 @@ const CardContainer = styled.div`
   transform: translate(-50%, -50%);
   z-index: 7;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+  overflow: auto;
 `;
 
 const CardDismiss = styled.div`

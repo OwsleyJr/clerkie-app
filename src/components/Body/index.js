@@ -57,5 +57,5 @@ const Container = styled.div`
   justify-content: center;
   margin: auto;
   max-width: 600px;
-  height: auto;
+  min-height: 100vh;
 `;
