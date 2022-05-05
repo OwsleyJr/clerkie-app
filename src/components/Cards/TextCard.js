@@ -34,7 +34,6 @@ const CardContainer = styled.div`
   background-color: white;
   border-radius: 5px;
   width: 70%;
-  height: 100%;
   margin: 0px 15px 0px 15px;
   align-items: center;
   justify-content: center;
@@ -51,7 +50,12 @@ const CardContainer = styled.div`
   }
   @media (max-width: 768px) {
     width: 85%;
-    height: 100px;
+
+    &:hover {
+      transform: scale(
+        ${(props) => (props.cardData.click_action_data ? 1 : 1)}
+      );
+    }
   }
 `;
 

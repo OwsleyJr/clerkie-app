@@ -50,6 +50,7 @@ const CardContainer = styled.div`
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
   min-height: 180px;
+  min-width: 200px;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
@@ -62,7 +63,13 @@ const CardContainer = styled.div`
   }
   @media (max-width: 768px) {
     width: 85%;
-    height: 85%;
+    height: 50%;
+    &:hover {
+      transform: scale(
+        ${(props) => (props.cardData.click_action_data ? 1 : 1)}
+      );
+    }
+    min-height: 200px;
   }
 `;
 

@@ -99,7 +99,12 @@ const CardContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 85%;
-    height: 100px;
+    height: 120px;
+    &:hover {
+      transform: scale(
+        ${(props) => (props.cardData.click_action_data ? 1 : 1)}
+      );
+    }
   }
 `;
 
