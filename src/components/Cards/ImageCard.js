@@ -45,12 +45,13 @@ const CardContainer = styled.div`
   background-color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0px 15px 0px 15px;
   position: relative;
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
   min-height: 180px;
-  min-width: 200px;
+  width: 70%;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
@@ -63,20 +64,20 @@ const CardContainer = styled.div`
   }
   @media (max-width: 768px) {
     width: 85%;
-    height: 50%;
     &:hover {
       transform: scale(
         ${(props) => (props.cardData.click_action_data ? 1 : 1)}
       );
     }
-    min-height: 200px;
+    min-height: 150px;
   }
 `;
 
 const ImageContainer = styled.div`
-  height: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
+  min-height: 90%;
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
   text-align: ${(props) => props.cardData.view_alignment};
+  position: absolute;
 `;
 
 const SquareImage = styled(Image)`

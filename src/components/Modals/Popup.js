@@ -45,6 +45,8 @@ export default Popup;
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  border-style: solid;
+  border-width: 2px;
   background-color: #1f2128;
   border-radius: 10px;
   height: 500px;

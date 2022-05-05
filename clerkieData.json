@@ -326,7 +326,7 @@
         },
         {
           "type": "text",
-          "text": "This is my popup!",
+          "text": "This is a really nice text card with amazing responsiveness.",
           "click_action": "dismiss"
         },
         {

@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { useGlobalContext } from "../../../context";
 
 export const links = [{ name: "Home", to: "/", id: 1 }];
 
 const DesktopNavLinks = () => {
+  const { screenSwitcher } = useGlobalContext();
+
   return (
-    <NavLinksWrapper className="nav-links">
+    <NavLinksWrapper onClick={() => screenSwitcher()} className="nav-links">
       {links.map(({ name, to, id }) => (
         <li key={id}>
           <NavLink href={to} className="link">
