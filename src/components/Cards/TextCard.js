@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context";
 
 const Text = (props) => {
+  const [dismissView, setDismissView] = useState(true);
   const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
+
+  const dismissSwitcher = () => {
+    setDismissView(false);
+  };
 
   return (
     <>
-      <CardContainer
-        cardData={props.cardData}
-        onClick={() =>
-          props.cardData.click_action === "present_fullscreen"
-            ? (screenSwitcher(), setViewData(props.cardData))
-            : props.cardData.click_action === "present_popup"
-            ? (popupSwitcher(), setViewData(props.cardData))
-            : ""
-        }
-      >
-        <TextContainer cardData={props.cardData}>
-          <ActualText cardData={props.cardData}>
-            {props.cardData.text}
-          </ActualText>
-        </TextContainer>
-      </CardContainer>
+      {dismissView && (
+        <CardContainer
+          cardData={props.cardData}
+          onClick={() =>
+            props.cardData.click_action === "present_fullscreen"
+              ? (screenSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "present_popup"
+              ? (popupSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "dismiss"
+              ? dismissSwitcher()
+              : ""
+          }
+        >
+          <TextContainer cardData={props.cardData}>
+            <ActualText cardData={props.cardData}>
+              {props.cardData.text}
+            </ActualText>
+          </TextContainer>
+        </CardContainer>
+      )}
     </>
   );
 };
@@ -33,7 +42,7 @@ const CardContainer = styled.div`
   display: flex;
   background-color: white;
   border-radius: 5px;
-  width: 70%;
+  width: 100%;
   margin: 0px 15px 0px 15px;
   align-items: center;
   justify-content: center;
@@ -61,7 +70,7 @@ const CardContainer = styled.div`
 
 const TextContainer = styled.div`
   display: flex;
-  width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
+  position: relative;
   align-items: center;
   justify-content: center;
   text-align: ${(props) => props.cardData.view_alignment};
@@ -69,9 +78,10 @@ const TextContainer = styled.div`
 
 const ActualText = styled.p`
   font-size: ${(props) =>
-    props.cardData.font_size ? props.cardData.font_size : "14"}px;
+    props.cardData.font_size ? props.cardData.font_size : "20"}px;
   font-weight: ${(props) =>
     props.cardData.font_weight ? props.cardData.font_weight : "normal"};
   color: ${(props) => (props.cardData.color ? props.cardData.color : "black")};
   text-align: ${(props) => props.cardData.alignment};
+  width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
 `;

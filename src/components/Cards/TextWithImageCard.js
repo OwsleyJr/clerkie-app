@@ -4,14 +4,10 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../context";
 
 const TextWithImage = (props) => {
-  const [json, setJson] = useState({});
   const [compHeight, setCompHeight] = useState(100);
+  const [dismissView, setDismissView] = useState(true);
 
   const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
-
-  useEffect(() => {
-    setJson(props.cardData);
-  }, [props.cardData]);
 
   useEffect(() => {
     if (props.cardData.height) {
@@ -31,11 +27,13 @@ const TextWithImage = (props) => {
     }
   }, [props.cardData]);
 
-  console.log("THIS IS THE TEXTWITHIMAGECARD", props.id);
+  const dismissSwitcher = () => {
+    setDismissView(false);
+  };
 
   return (
     <>
-      {Object.keys(json).length > 0 && compHeight && (
+      {dismissView && (
         <CardContainer
           cardData={props.cardData}
           compHeight={compHeight}
@@ -44,27 +42,34 @@ const TextWithImage = (props) => {
               ? (screenSwitcher(), setViewData(props.cardData))
               : props.cardData.click_action === "present_popup"
               ? (popupSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "dismiss"
+              ? dismissSwitcher()
               : ""
           }
         >
           <LeftSide compHeight={compHeight}>
             <RoundedImage
-              src={json.image.src}
+              src={props.cardData.image.src}
               alt="Rounded Image"
               layout="fill"
             ></RoundedImage>
           </LeftSide>
-          {json.subtitle !== undefined ||
-          (json.subtitle !== undefined && json.subtitle.text.length > 0) ? (
+          {props.cardData.subtitle !== undefined ||
+          (props.cardData.subtitle !== undefined &&
+            props.cardData.subtitle.text.length > 0) ? (
             <RightSide cardData={props.cardData}>
-              <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
+              <CardTitle cardData={props.cardData}>
+                {props.cardData.title.text}
+              </CardTitle>
               <CardSubtitle cardData={props.cardData}>
-                {json.subtitle.text}
+                {props.cardData.subtitle.text}
               </CardSubtitle>
             </RightSide>
           ) : (
             <RightSide cardData={props.cardData}>
-              <CardTitle cardData={props.cardData}>{json.title.text}</CardTitle>
+              <CardTitle cardData={props.cardData}>
+                {props.cardData.title.text}
+              </CardTitle>
             </RightSide>
           )}
         </CardContainer>
@@ -78,8 +83,9 @@ export default TextWithImage;
 const CardContainer = styled.div`
   display: flex;
   background-color: white;
+  justify-content: start;
   border-radius: 5px;
-  width: 70%;
+  width: 100%;
   position: relative;
   flex-direction: row;
   margin: 0px 15px 0px 15px;
@@ -99,7 +105,6 @@ const CardContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 85%;
-    height: 120px;
     &:hover {
       transform: scale(
         ${(props) => (props.cardData.click_action_data ? 1 : 1)}
@@ -123,6 +128,9 @@ const RightSide = styled.div`
   text-align: ${(props) => props.cardData.title.view_alignment};
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const RoundedImage = styled(Image)`

@@ -6,10 +6,13 @@ import { useGlobalContext } from "../../../context";
 export const links = [{ name: "Home", to: "/", id: 1 }];
 
 const DesktopNavLinks = () => {
-  const { screenSwitcher } = useGlobalContext();
+  const { screenSwitcher, secondFullView } = useGlobalContext();
 
   return (
-    <NavLinksWrapper onClick={() => screenSwitcher()} className="nav-links">
+    <NavLinksWrapper
+      onClick={() => secondFullView && screenSwitcher()}
+      className="nav-links"
+    >
       {links.map(({ name, to, id }) => (
         <li key={id}>
           <NavLink href={to} className="link">
@@ -36,10 +39,9 @@ const NavLinksWrapper = styled.ul`
     cursor: pointer;
   }
   @media screen and (max-width: 768px) {
-    display: none;
     li {
-      padding: 12px;
-      margin: 0 !important;
+      color: #07b4f2;
+      font-weight: bolder;
     }
   }
 `;

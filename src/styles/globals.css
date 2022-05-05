@@ -19,13 +19,13 @@ a {
   max-width: 600px;
 }
 
-.showPopup {
+.showContainer {
   display: block;
   visibility: visible;
   opacity: 1;
   transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
-.hidePopup {
+.hideContainer {
   max-height: 0%;
   display: none;
   overflow: hidden;

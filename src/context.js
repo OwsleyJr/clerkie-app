@@ -16,9 +16,6 @@ const AppProvider = ({ children }) => {
     setPopupView(!popupView);
   };
 
-  console.log("POPUP VIEW", popupView);
-  console.log("SECONDFULLVIEW", secondFullView);
-
   return (
     <AppContext.Provider
       value={{

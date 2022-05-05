@@ -35,19 +35,24 @@ const Header = () => {
               height={40}
             />
           </ImageContainer>
-          <MobileNav>
-            <svg
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </MobileNav>
+          {/* <MobileNav>
+            <BurgerContainer>
+              <svg
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </BurgerContainer>
+            <MobileLinksContainer>
+              <NavLinks />
+            </MobileLinksContainer>
+          </MobileNav> */}
         </>
       )}
 
@@ -74,6 +79,7 @@ const HeaderNav = styled.nav`
   z-index: 2;
   @media screen and (max-width: 768px) {
     justify-content: space-between;
+    align-items: center;
     padding: 0 30px;
   }
 `;
@@ -82,7 +88,8 @@ const MobileNav = styled.div`
   display: none;
   @media (max-width: 768px) {
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    items
     position: relative;
     width: 50%;
     height: 50%;
@@ -123,7 +130,19 @@ const LinksContainer = styled.div`
   font-weight: bolder;
   font-size: 30px;
   @media (max-width: 768px) {
-    display: none;
+    font-size: 25px;
+  }
+`;
+
+const BurgerContainer = styled.div`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`;
+
+const MobileLinksContainer = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;
 

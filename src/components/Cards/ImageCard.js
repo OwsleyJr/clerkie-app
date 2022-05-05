@@ -5,6 +5,7 @@ import { useGlobalContext } from "../../context";
 
 const ImageCard = (props) => {
   const [compHeight, setCompHeight] = useState(150);
+  const [dismissView, setDismissView] = useState(true);
 
   useEffect(() => {
     if (props.cardData.height) {
@@ -14,27 +15,36 @@ const ImageCard = (props) => {
 
   const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
 
+  const dismissSwitcher = () => {
+    setDismissView(false);
+  };
+
   return (
     <>
-      <CardContainer
-        compHeight={compHeight}
-        cardData={props.cardData}
-        onClick={() =>
-          props.cardData.click_action === "present_fullscreen"
-            ? (screenSwitcher(), setViewData(props.cardData))
-            : props.cardData.click_action === "present_popup"
-            ? (popupSwitcher(), setViewData(props.cardData))
-            : ""
-        }
-      >
-        <ImageContainer cardData={props.cardData}>
-          <SquareImage
-            src={props.cardData.src}
-            alt="Full Image"
-            layout="fill"
-          />
-        </ImageContainer>
-      </CardContainer>
+      {dismissView && (
+        <CardContainer
+          compHeight={compHeight}
+          dismissView={dismissView}
+          cardData={props.cardData}
+          onClick={() =>
+            props.cardData.click_action === "present_fullscreen"
+              ? (screenSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "present_popup"
+              ? (popupSwitcher(), setViewData(props.cardData))
+              : props.cardData.click_action === "dismiss"
+              ? dismissSwitcher()
+              : ""
+          }
+        >
+          <ImageContainer cardData={props.cardData}>
+            <SquareImage
+              src={props.cardData.src}
+              alt="Full Image"
+              layout="fill"
+            />
+          </ImageContainer>
+        </CardContainer>
+      )}
     </>
   );
 };
@@ -51,7 +61,7 @@ const CardContainer = styled.div`
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
   min-height: 180px;
-  width: 70%;
+  width: 100%;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;

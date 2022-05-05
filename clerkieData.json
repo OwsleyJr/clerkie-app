@@ -5,10 +5,10 @@
   },
   {
     "type": "text",
-    "text": "Welcome to my test app!",
+    "text": "Welcome to my test app! This is more texted added to the card for testing purposes.",
     "font_size": "20",
     "font_weight": "bold",
-    "width_percent": 0.3,
+    "width_percent": 0.7,
     "alignment": "center",
     "view_alignment": "center",
     "color": "black",
@@ -21,7 +21,7 @@
           "click_action": "dismiss",
           "font_size": "20",
           "font_weight": "bold",
-          "width_percent": 0.3,
+          "width_percent": 0.5,
           "alignment": "center",
           "view_alignment": "center",
           "color": "black"
@@ -282,8 +282,8 @@
   {
     "type": "text_with_image",
     "title": {
-      "text": "Test Fullscreen",
-      "font_size": "30",
+      "text": "Click To Test Fullscreen",
+      "font_size": "25",
       "font_weight": "normal",
       "alignment": "center",
       "view_alignment": "center",
@@ -313,6 +313,15 @@
           "height": 25
         },
         {
+          "type": "text",
+          "text": "This is a really nice text card with amazing responsiveness.",
+          "click_action": "dismiss"
+        },
+        {
+          "type": "space",
+          "height": 25
+        },
+        {
           "type": "image",
           "h2w_ratio": 1.0,
           "width_percent": 0.5,
@@ -325,19 +334,10 @@
           "height": 15
         },
         {
-          "type": "text",
-          "text": "This is a really nice text card with amazing responsiveness.",
-          "click_action": "dismiss"
-        },
-        {
-          "type": "space",
-          "height": 15
-        },
-        {
           "type": "text_with_image",
           "title": {
             "text": "Test Popup",
-            "font_size": "14",
+            "font_size": "18",
             "font_weight": "normal",
             "color": "black",
             "alignment": "center",
@@ -345,7 +345,7 @@
           },
           "subtitle": {
             "text": "Subtitle",
-            "font_size": "12",
+            "font_size": "16",
             "font_weight": "normal",
             "alignment": "center",
             "view_alignment": "center",
@@ -355,9 +355,37 @@
             "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
           },
           "height": 100,
-          "click_action": "present_popup"
+          "click_action": "dismiss"
         }
       ]
     }
+  },
+  {
+    "type": "space",
+    "height": 25
+  },
+  {
+    "type": "text",
+    "text": "Click To Test Dismiss",
+    "font_size": "20",
+    "font_weight": "bold",
+    "width_percent": 0.7,
+    "alignment": "center",
+    "view_alignment": "center",
+    "color": "black",
+    "click_action": "dismiss"
+  },
+  {
+    "type": "space",
+    "height": 25
+  },
+  {
+    "type": "image",
+    "h2w_ratio": 1.0,
+    "width_percent": 0.8,
+    "height": 200,
+    "view_alignment": "center",
+    "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+    "click_action": "dismiss"
   }
 ]
