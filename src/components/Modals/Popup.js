@@ -9,7 +9,7 @@ import { useGlobalContext } from "../../context";
 import useClickOutside from "../../hooks/useClickOutside";
 
 const Popup = (props) => {
-  const { popupSwitcher, popupView } = useGlobalContext();
+  const { popupSwitcher } = useGlobalContext();
 
   const ref = useRef();
 
@@ -76,13 +76,4 @@ const Title = styled.h2`
   font-weight: bolder;
   font-size: 40px;
   color: #07b4f2;
-`;
-
-const CardDismiss = styled.div`
-  cursor: pointer;
-  position: absolute;
-  color: white;
-  top: 0;
-  right: 0;
-  z-index: 7;
 `;
