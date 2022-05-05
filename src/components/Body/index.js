@@ -10,14 +10,14 @@ import Popup from "../Modals/Popup";
 import { useGlobalContext } from "../../context";
 
 const Body = () => {
-  const { secondFullView, popupView, viewData, setViewData, viewType } =
-    useGlobalContext();
+  const { secondFullView, popupView, viewData } = useGlobalContext();
 
   console.log("BODYVIEW", viewData);
 
   return (
     <>
       <Container>
+        <FullscreenView>Fullscreen View</FullscreenView>
         {clerkieData.map((cardData, idx) => {
           if (!secondFullView) {
             console.log("INSIDE MAP FUNC", idx);
@@ -58,4 +58,18 @@ const Container = styled.div`
   margin: auto;
   max-width: 600px;
   min-height: 100vh;
+  @media (max-width: 768px) {
+    min-height: 0;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+`;
+
+const FullscreenView = styled.h1`
+  font-weight: bolder;
+  font-size: 80px;
+  color: #07b4f2;
+  @media (max-width: 768px) {
+    font-size: 45px;
+  }
 `;

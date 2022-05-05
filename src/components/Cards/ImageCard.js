@@ -46,10 +46,10 @@ const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 0px 15px 0px 15px;
+  position: relative;
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
-  height: ${(props) => props.compHeight}px;
-  position: relative;
+  min-height: 180px;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
   -webkit-tap-highlight-color: transparent;
@@ -60,12 +60,15 @@ const CardContainer = styled.div`
       ${(props) => (props.cardData.click_action_data ? 1.05 : 1)}
     );
   }
+  @media (max-width: 768px) {
+    width: 85%;
+    height: 85%;
+  }
 `;
 
 const ImageContainer = styled.div`
-  height: 100%;
+  height: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
-  position: absolute;
   text-align: ${(props) => props.cardData.view_alignment};
 `;
 

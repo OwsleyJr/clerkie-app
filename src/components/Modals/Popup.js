@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import TextWithImage from "../Cards/TextWithImageCard";
@@ -6,13 +6,21 @@ import Text from "../Cards/TextCard";
 import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import { useGlobalContext } from "../../context";
+import useClickOutside from "../../hooks/useClickOutside";
 
 const Popup = (props) => {
-  const { popupSwitcher } = useGlobalContext();
+  const { popupSwitcher, popupView } = useGlobalContext();
+
+  const ref = useRef();
+
+  useClickOutside(ref, () => popupSwitcher());
 
   return (
     <>
-      <CardContainer>
+      <CardContainer ref={ref}>
+        <TitleDiv>
+          <Title>Popup View</Title>
+        </TitleDiv>
         {props.cardData.click_action_data.data.map((cardData, idx) => {
           if (cardData.type === "text_with_image") {
             return <TextWithImage key={idx} cardData={cardData} />;
@@ -56,13 +64,14 @@ export default Popup;
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: black;
-  border-radius: 5px;
-  height: auto;
+  background-color: #1f2128;
+  border-radius: 10px;
+  height: 500px;
   width: 400px;
+  margin-top: 20px;
   align-items: center;
-  justify-content: center;
-  padding: 25px;
+  justify-content: start;
+  padding-bottom: 40px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -70,7 +79,22 @@ const CardContainer = styled.div`
   transform: translate(-50%, -50%);
   z-index: 7;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
-  overflow: auto;
+  overflow-y: auto;
+  @media (max-width: 768px) {
+    width: 85%;
+    padding: 10px;
+    padding-bottom: 30px;
+  }
+`;
+
+const TitleDiv = styled.div`
+  display: flex;
+`;
+
+const Title = styled.h2`
+  font-weight: bolder;
+  font-size: 40px;
+  color: #07b4f2;
 `;
 
 const CardDismiss = styled.div`

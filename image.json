@@ -1,8 +1,0 @@
-{
-  "type": "image",
-  "h2w_ratio": 1.0,
-  "width_percent": 0.5,
-  "view_alignment": "center",
-  "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
-  "click_action": "dismiss"
-}

@@ -49,6 +49,10 @@ const CardContainer = styled.div`
       ${(props) => (props.cardData.click_action_data ? 1.05 : 1)}
     );
   }
+  @media (max-width: 768px) {
+    width: 85%;
+    height: 100px;
+  }
 `;
 
 const TextContainer = styled.div`

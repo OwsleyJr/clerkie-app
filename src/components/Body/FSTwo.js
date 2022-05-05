@@ -33,7 +33,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  max-width: 600px;
-  min-height: 100vh;
+  width: 100%;
+  @media (max-width: 768px) {
+    min-height: 0;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
 `;

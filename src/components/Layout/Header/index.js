@@ -31,8 +31,8 @@ const Header = () => {
             <RoundedImage
               src={Logo}
               alt="Clerkie Logo"
-              width={30}
-              height={30}
+              width={40}
+              height={40}
             />
           </ImageContainer>
           <MobileNav>
@@ -104,7 +104,8 @@ const MobileNav = styled.div`
 const ImageContainer = styled.div`
   @media (max-width: 768px) {
     display: flex;
-
+    align-items: center;
+    justify-content: center;
     position: relative;
     float: left;
   }
@@ -118,6 +119,9 @@ const RoundedImage = styled(Image)`
 
 const LinksContainer = styled.div`
   float: right;
+  color: #07b4f2;
+  font-weight: bolder;
+  font-size: 30px;
   @media (max-width: 768px) {
     display: none;
   }

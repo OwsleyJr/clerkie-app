@@ -80,6 +80,7 @@ const CardContainer = styled.div`
   background-color: white;
   border-radius: 5px;
   width: 70%;
+  position: relative;
   flex-direction: row;
   margin: 0px 15px 0px 15px;
   padding: 4px 0px 4px 0px;
@@ -94,6 +95,11 @@ const CardContainer = styled.div`
     transform: scale(
       ${(props) => (props.cardData.click_action_data ? 1.05 : 1)}
     );
+  }
+
+  @media (max-width: 768px) {
+    width: 85%;
+    height: 100px;
   }
 `;
 

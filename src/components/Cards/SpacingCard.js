@@ -9,4 +9,5 @@ export default SpacingCard;
 
 const Spacing = styled.div`
   height: ${(props) => (props.cardData ? props.cardData.height : "10")}px;
+  padding: 10px 0px 10px 0px;
 `;
