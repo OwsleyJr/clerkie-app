@@ -33,7 +33,7 @@ const NavLinksWrapper = styled.ul`
     cursor: pointer;
   }
   @media screen and (max-width: 768px) {
-    flex-direction: column;
+    display: none;
     li {
       padding: 12px;
       margin: 0 !important;

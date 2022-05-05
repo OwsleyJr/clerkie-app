@@ -26,8 +26,31 @@ const Header = () => {
           </svg>
         </SvgContainer>
       ) : (
-        <RoundedImage src={Logo} alt="Clerkie Logo" width={30} height={30} />
+        <>
+          <ImageContainer>
+            <RoundedImage
+              src={Logo}
+              alt="Clerkie Logo"
+              width={30}
+              height={30}
+            />
+          </ImageContainer>
+          <MobileNav>
+            <svg
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </MobileNav>
+        </>
       )}
+
       <LinksContainer>
         <NavLinks />
       </LinksContainer>
@@ -53,10 +76,37 @@ const HeaderNav = styled.nav`
     justify-content: space-between;
     padding: 0 30px;
   }
-  .nav-links {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
+`;
+
+const MobileNav = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    float: right;
+  }
+`;
+
+// const ImageDiv = styled.div`
+// @media (max-width: 768px) {
+//   display: flex;
+//   justify-content: end;
+//   position: relative;
+//   width: 50%;
+//   height: 50%;
+//   float: right;
+// }
+// `
+
+const ImageContainer = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+
+    position: relative;
+    float: left;
   }
 `;
 
@@ -68,6 +118,9 @@ const RoundedImage = styled(Image)`
 
 const LinksContainer = styled.div`
   float: right;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SvgContainer = styled.div`
