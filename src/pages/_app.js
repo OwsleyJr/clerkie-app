@@ -33,9 +33,8 @@ function MyApp({ Component, pageProps, router }) {
             data-rh="true"
           ></meta>
         </Head>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.pathname} />
-        </AnimatePresence>
+
+        <Component {...pageProps} />
       </Layout>
     </AppProvider>
   );

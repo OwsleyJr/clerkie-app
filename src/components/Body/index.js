@@ -18,11 +18,6 @@ const Body = () => {
     isOpen: { opacity: 1 },
     exit: { opacity: 0 },
   };
-  const containerVariant = {
-    initial: { top: "-50%", transition: { type: "spring" } },
-    isOpen: { top: "50%" },
-    exit: { top: "-50%" },
-  };
 
   return (
     <>
@@ -44,18 +39,17 @@ const Body = () => {
             }
           }
         })}
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
           {secondFullView && viewData.click_action === "present_fullscreen" ? (
             <FSTwo cardData={viewData} />
           ) : popupView && viewData.click_action === "present_popup" ? (
             <Overlay
-              key="modal"
               initial={"initial"}
               animate={"isOpen"}
               exit={"exit"}
               variants={modalVariant}
             >
-              <Popup cardData={viewData} containerVariant={containerVariant} />
+              <Popup cardData={viewData} />
             </Overlay>
           ) : (
             ""

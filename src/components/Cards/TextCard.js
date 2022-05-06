@@ -16,8 +16,6 @@ const Text = (props) => {
     setCardColor(getColor());
   };
 
-  console.log(newColor);
-
   return (
     <>
       {dismissView && (

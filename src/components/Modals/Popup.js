@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import Image from "next/image";
 import TextWithImage from "../Cards/TextWithImageCard";
 import Text from "../Cards/TextCard";
 import ImageCard from "../Cards/ImageCard";
@@ -12,6 +11,8 @@ const Popup = (props) => {
   const { popupSwitcher } = useGlobalContext();
 
   const ref = useRef();
+
+  console.log("HERE IS THE REF", ref);
 
   useClickOutside(ref, () => popupSwitcher());
 
@@ -51,7 +52,7 @@ const CardContainer = styled.div`
   border-radius: 12px;
   width: 35%;
   max-height: 60%;
-  padding: 0px 35px 0px 35px;
+  padding: 0px 55px 0px 55px;
   margin-top: 20px;
   align-items: center;
   justify-content: start;
