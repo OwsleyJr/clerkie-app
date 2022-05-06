@@ -2,8 +2,9 @@ import "../styles/globals.css";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import AppProvider from "../context";
+import { AnimatePresence } from "framer-motion";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <AppProvider>
       <Layout>
@@ -32,8 +33,9 @@ function MyApp({ Component, pageProps }) {
             data-rh="true"
           ></meta>
         </Head>
-
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.pathname} />
+        </AnimatePresence>
       </Layout>
     </AppProvider>
   );

@@ -110,7 +110,6 @@ const HeaderNav = styled.nav`
 `;
 
 const MobileNav = styled.div`
-  display: none;
   @media (max-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -147,6 +146,7 @@ const LinksContainer = styled.div`
 `;
 
 const CloseContainer = styled.div`
+  display: none;
   @media (max-width: 768px) {
     display: ${(props) => (props.show ? "flex" : "none")};
     width: 24px;
@@ -156,6 +156,7 @@ const CloseContainer = styled.div`
 `;
 
 const BurgerContainer = styled.div`
+  display: none;
   @media (max-width: 768px) {
     display: ${(props) => (props.show ? "none" : "flex")};
     justify-content: end;
@@ -166,6 +167,7 @@ const BurgerContainer = styled.div`
 `;
 
 const MobileLinksContainer = styled.div`
+  display: none;
   @media (max-width: 768px) {
     display: ${(props) => (props.show ? "flex" : "none")};
     flex-direction: row;

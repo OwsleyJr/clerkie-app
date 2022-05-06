@@ -7,7 +7,6 @@ import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import { useGlobalContext } from "../../context";
 import useClickOutside from "../../hooks/useClickOutside";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Popup = (props) => {
   const { popupSwitcher } = useGlobalContext();
@@ -16,47 +15,27 @@ const Popup = (props) => {
 
   useClickOutside(ref, () => popupSwitcher());
 
-  const modalVariant = {
-    initial: { opacity: 0 },
-    isOpen: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
-  const containerVariant = {
-    initial: { top: "-50%", transition: { type: "spring" } },
-    isOpen: { top: "50%" },
-    exit: { top: "-50%" },
-  };
-
   return (
     <>
-      <AnimatePresence>
-        <Overlay
-          initial={"initial"}
-          animate={"isOpen"}
-          exit={"exit"}
-          variants={modalVariant}
-        >
-          <CardContainer ref={ref} variants={containerVariant}>
-            <TitleDiv>
-              <Title>Popup View</Title>
-            </TitleDiv>
-            {props.cardData.click_action_data.data.map((cardData, idx) => {
-              if (cardData.type === "text_with_image") {
-                return <TextWithImage key={idx} cardData={cardData} />;
-              }
-              if (cardData.type === "text") {
-                return <Text key={idx} cardData={cardData} />;
-              }
-              if (cardData.type === "image") {
-                return <ImageCard key={idx} cardData={cardData} />;
-              }
-              if (cardData.type === "space") {
-                return <SpacingCard key={idx} cardData={cardData} />;
-              }
-            })}
-          </CardContainer>
-        </Overlay>
-      </AnimatePresence>
+      <CardContainer ref={ref}>
+        <TitleDiv>
+          <Title>Popup View</Title>
+        </TitleDiv>
+        {props.cardData.click_action_data.data.map((cardData, idx) => {
+          if (cardData.type === "text_with_image") {
+            return <TextWithImage key={idx} cardData={cardData} />;
+          }
+          if (cardData.type === "text") {
+            return <Text key={idx} cardData={cardData} />;
+          }
+          if (cardData.type === "image") {
+            return <ImageCard key={idx} cardData={cardData} />;
+          }
+          if (cardData.type === "space") {
+            return <SpacingCard key={idx} cardData={cardData} />;
+          }
+        })}
+      </CardContainer>
     </>
   );
 };
@@ -101,14 +80,4 @@ const Title = styled.h2`
   font-weight: bolder;
   font-size: 40px;
   color: #07b4f2;
-`;
-
-const Overlay = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
 `;

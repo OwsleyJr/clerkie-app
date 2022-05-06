@@ -8,9 +8,21 @@ import clerkieData from "../../../clerkieData.json";
 import FSTwo from "./FSTwo";
 import Popup from "../Modals/Popup";
 import { useGlobalContext } from "../../context";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Body = () => {
   const { secondFullView, popupView, viewData } = useGlobalContext();
+
+  const modalVariant = {
+    initial: { opacity: 0 },
+    isOpen: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+  const containerVariant = {
+    initial: { top: "-50%", transition: { type: "spring" } },
+    isOpen: { top: "50%" },
+    exit: { top: "-50%" },
+  };
 
   return (
     <>
@@ -32,14 +44,23 @@ const Body = () => {
             }
           }
         })}
-
-        {secondFullView && viewData.click_action === "present_fullscreen" ? (
-          <FSTwo cardData={viewData} />
-        ) : popupView && viewData.click_action === "present_popup" ? (
-          <Popup cardData={viewData} />
-        ) : (
-          ""
-        )}
+        <AnimatePresence>
+          {secondFullView && viewData.click_action === "present_fullscreen" ? (
+            <FSTwo cardData={viewData} />
+          ) : popupView && viewData.click_action === "present_popup" ? (
+            <Overlay
+              key="modal"
+              initial={"initial"}
+              animate={"isOpen"}
+              exit={"exit"}
+              variants={modalVariant}
+            >
+              <Popup cardData={viewData} containerVariant={containerVariant} />
+            </Overlay>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
       </Container>
     </>
   );
@@ -69,4 +90,14 @@ const FullscreenView = styled.h1`
   @media (max-width: 768px) {
     font-size: 45px;
   }
+`;
+
+const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 `;
