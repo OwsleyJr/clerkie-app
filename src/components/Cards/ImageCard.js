@@ -60,7 +60,7 @@ const CardContainer = styled.div`
   position: relative;
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
-  min-height: 180px;
+  height: 200px;
   width: 100%;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
@@ -79,15 +79,14 @@ const CardContainer = styled.div`
         ${(props) => (props.cardData.click_action_data ? 1 : 1)}
       );
     }
-    min-height: 150px;
   }
 `;
 
 const ImageContainer = styled.div`
-  min-height: 90%;
+  height: 100%;
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
   text-align: ${(props) => props.cardData.view_alignment};
-  position: absolute;
+  position: relative;
 `;
 
 const SquareImage = styled(Image)`

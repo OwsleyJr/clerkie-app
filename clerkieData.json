@@ -5,7 +5,7 @@
   },
   {
     "type": "text",
-    "text": "Welcome to my test app! This is more texted added to the card for testing purposes.",
+    "text": "Welcome to my test app! This is more text added to the card for testing purposes.",
     "font_size": "20",
     "font_weight": "bold",
     "width_percent": 0.7,
@@ -64,7 +64,7 @@
   {
     "type": "image",
     "h2w_ratio": 1.0,
-    "width_percent": 0.8,
+    "width_percent": 0.5,
     "height": 200,
     "view_alignment": "center",
     "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
@@ -382,7 +382,7 @@
   {
     "type": "image",
     "h2w_ratio": 1.0,
-    "width_percent": 0.8,
+    "width_percent": 0.3,
     "height": 200,
     "view_alignment": "center",
     "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
