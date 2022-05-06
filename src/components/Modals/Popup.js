@@ -72,8 +72,6 @@ const CardContainer = styled.div`
   border-radius: 12px;
   width: 35%;
   max-height: 60%;
-  padding-left: 25px;
-  padding-right: 25px;
   margin-top: 20px;
   align-items: center;
   justify-content: start;

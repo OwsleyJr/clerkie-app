@@ -35,15 +35,15 @@
           "type": "text_with_image",
           "title": {
             "text": "Test Popup",
-            "font_size": "14",
-            "font_weight": "normal",
+            "font_size": "20",
+            "font_weight": "bold",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
             "text": "Subtitle",
-            "font_size": "12",
+            "font_size": "16",
             "font_weight": "normal",
             "alignment": "center",
             "view_alignment": "center",

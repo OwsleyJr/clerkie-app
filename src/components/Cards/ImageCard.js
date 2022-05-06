@@ -74,7 +74,7 @@ const CardContainer = styled.div`
   }
   @media (max-width: 768px) {
     width: 85%;
-    height: 180px;
+    height: 160px;
     &:hover {
       transform: scale(
         ${(props) => (props.cardData.click_action_data ? 1 : 1)}

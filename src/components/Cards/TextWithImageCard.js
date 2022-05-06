@@ -131,9 +131,11 @@ const LeftSide = styled.div`
 const RightSide = styled.div`
   text-align: ${(props) => props.cardData.title.view_alignment};
   display: flex;
+  align-items: center;
+  justify-content: start;
   flex-direction: column;
   @media (max-width: 768px) {
-    width: 50%;
+    max-width: 50%;
   }
 `;
 
