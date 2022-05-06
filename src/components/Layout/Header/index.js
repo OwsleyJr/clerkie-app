@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import Logo from "../../../assets/clerkieLogo.jpg";
@@ -7,6 +7,7 @@ import { useGlobalContext } from "../../../context";
 
 const Header = () => {
   const { secondFullView, screenSwitcher } = useGlobalContext();
+  const [show, setShow] = useState(false);
 
   return (
     <HeaderNav>
@@ -27,16 +28,17 @@ const Header = () => {
         </SvgContainer>
       ) : (
         <>
-          <ImageContainer>
-            <RoundedImage
-              src={Logo}
-              alt="Clerkie Logo"
-              width={40}
-              height={40}
-            />
-          </ImageContainer>
-          {/* <MobileNav>
-            <BurgerContainer>
+          <MobileNav>
+            <ImageContainer>
+              <RoundedImage
+                src={Logo}
+                alt="Clerkie Logo"
+                width={40}
+                height={40}
+              />
+            </ImageContainer>
+
+            <BurgerContainer show={show} onClick={() => setShow(!show)}>
               <svg
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -49,10 +51,32 @@ const Header = () => {
                 ></path>
               </svg>
             </BurgerContainer>
-            <MobileLinksContainer>
+            <MobileLinksContainer show={show}>
               <NavLinks />
             </MobileLinksContainer>
-          </MobileNav> */}
+            <CloseContainer show={show} onClick={() => setShow(!show)}>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6L6 18"
+                  stroke="#ffffff"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 6L18 18"
+                  stroke="#ffffff"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </CloseContainer>
+          </MobileNav>
         </>
       )}
 
@@ -78,6 +102,7 @@ const HeaderNav = styled.nav`
   padding: 0 60px;
   z-index: 2;
   @media screen and (max-width: 768px) {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
@@ -88,25 +113,12 @@ const MobileNav = styled.div`
   display: none;
   @media (max-width: 768px) {
     display: flex;
-    justify-content: center;
-    items
+    justify-content: space-between;
+    align-items: center;
     position: relative;
-    width: 50%;
-    height: 50%;
-    float: right;
+    width: 100%;
   }
 `;
-
-// const ImageDiv = styled.div`
-// @media (max-width: 768px) {
-//   display: flex;
-//   justify-content: end;
-//   position: relative;
-//   width: 50%;
-//   height: 50%;
-//   float: right;
-// }
-// `
 
 const ImageContainer = styled.div`
   @media (max-width: 768px) {
@@ -114,7 +126,6 @@ const ImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    float: left;
   }
 `;
 
@@ -131,18 +142,36 @@ const LinksContainer = styled.div`
   font-size: 30px;
   @media (max-width: 768px) {
     font-size: 25px;
+    display: none;
+  }
+`;
+
+const CloseContainer = styled.div`
+  @media (max-width: 768px) {
+    display: ${(props) => (props.show ? "flex" : "none")};
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
   }
 `;
 
 const BurgerContainer = styled.div`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+  @media (max-width: 768px) {
+    display: ${(props) => (props.show ? "none" : "flex")};
+    justify-content: end;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
 `;
 
 const MobileLinksContainer = styled.div`
   @media (max-width: 768px) {
-    display: flex;
+    display: ${(props) => (props.show ? "flex" : "none")};
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
   }
 `;
 

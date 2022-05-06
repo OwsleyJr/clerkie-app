@@ -7,7 +7,13 @@ const TextWithImage = (props) => {
   const [compHeight, setCompHeight] = useState(100);
   const [dismissView, setDismissView] = useState(true);
 
-  const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
+  const { popupSwitcher, screenSwitcher, setViewData, getColor, newColor } =
+    useGlobalContext();
+  const [cardColor, setCardColor] = useState(props.cardData.background_color);
+
+  const handleJsonColorChange = () => {
+    setCardColor(getColor());
+  };
 
   useEffect(() => {
     if (props.cardData.height) {
@@ -35,6 +41,7 @@ const TextWithImage = (props) => {
     <>
       {dismissView && (
         <CardContainer
+          cardColor={cardColor}
           cardData={props.cardData}
           compHeight={compHeight}
           onClick={() =>
@@ -44,6 +51,8 @@ const TextWithImage = (props) => {
               ? (popupSwitcher(), setViewData(props.cardData))
               : props.cardData.click_action === "dismiss"
               ? dismissSwitcher()
+              : props.cardData.click_action === "change_color"
+              ? handleJsonColorChange()
               : ""
           }
         >
@@ -82,7 +91,8 @@ export default TextWithImage;
 
 const CardContainer = styled.div`
   display: flex;
-  background-color: white;
+  background-color: ${(props) =>
+    props.cardData.background_color ? props.cardColor : "white"};
   justify-content: start;
   border-radius: 5px;
   border-width: 2px;
@@ -135,7 +145,7 @@ const RightSide = styled.div`
   justify-content: start;
   flex-direction: column;
   @media (max-width: 768px) {
-    max-width: 50%;
+    width: 50%;
   }
 `;
 
@@ -146,10 +156,16 @@ const RoundedImage = styled(Image)`
 `;
 
 const CardTitle = styled.h2`
-  font-size: ${(props) => props.cardData.title.font_size}px;
-  font-weight: ${(props) => props.cardData.title.font_weight};
-  color: ${(props) => props.cardData.title.color};
-  text-align: ${(props) => props.cardData.title.alignment};
+  font-size: ${(props) =>
+    props.cardData.title.font_size ? props.cardData.title.font_size : "20"}px;
+  font-weight: ${(props) =>
+    props.cardData.title.font_weight
+      ? props.cardData.title.font_weight
+      : "bold"};
+  color: ${(props) =>
+    props.cardData.title.color ? props.cardData.title.color : "black"};
+  text-align: ${(props) =>
+    props.cardData.title.alignment ? props.cardData.title.alignment : "center"};
   margin: auto;
 `;
 

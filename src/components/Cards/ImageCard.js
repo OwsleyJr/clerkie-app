@@ -58,9 +58,10 @@ const CardContainer = styled.div`
   align-items: center;
   margin: 0px 15px 0px 15px;
   position: relative;
-  aspect-ratio: ${(props) => props.cardData.h2w_ratio};
+  aspect-ratio: ${(props) =>
+    props.cardData.h2w_ratio ? props.cardData.h2w_ratio : "1.0"};
   border-radius: 5px;
-  height: 220px;
+  height: 210px;
   width: 100%;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
@@ -86,7 +87,8 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   height: inherit;
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
-  text-align: ${(props) => props.cardData.view_alignment};
+  text-align: ${(props) =>
+    props.cardData.view_alignment ? props.cardData.view_alignment : "center"};
   position: relative;
   display: flex;
 `;

@@ -85,7 +85,8 @@ const TextContainer = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  text-align: ${(props) => props.cardData.view_alignment};
+  text-align: ${(props) =>
+    props.cardData.view_alignment ? props.cardData.view_alignment : "center"};
 `;
 
 const ActualText = styled.p`
@@ -94,6 +95,7 @@ const ActualText = styled.p`
   font-weight: ${(props) =>
     props.cardData.font_weight ? props.cardData.font_weight : "normal"};
   color: ${(props) => (props.cardData.color ? props.cardData.color : "black")};
-  text-align: ${(props) => props.cardData.alignment};
+  text-align: ${(props) =>
+    props.cardData.alignment ? props.cardData.alignment : "center"};
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
 `;

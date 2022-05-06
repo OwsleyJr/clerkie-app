@@ -340,6 +340,8 @@
         },
         {
           "type": "text",
+          "font_size": "28",
+          "font_weight": "bolder",
           "text": "This is a really nice text card with amazing responsiveness.",
           "click_action": "dismiss"
         },
@@ -361,17 +363,18 @@
         },
         {
           "type": "text_with_image",
+          "background_color": "#32cfcc",
           "title": {
             "text": "Test Popup",
-            "font_size": "18",
-            "font_weight": "normal",
+            "font_size": "24",
+            "font_weight": "bolder",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
             "text": "Subtitle",
-            "font_size": "16",
+            "font_size": "20",
             "font_weight": "normal",
             "alignment": "center",
             "view_alignment": "center",
@@ -381,7 +384,7 @@
             "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
           },
           "height": 100,
-          "click_action": "dismiss"
+          "click_action": "change_color"
         }
       ]
     }
@@ -398,7 +401,7 @@
     "width_percent": 0.7,
     "alignment": "center",
     "view_alignment": "center",
-    "color": "#07b4f2",
+    "color": "#6790E7",
     "click_action": "dismiss"
   },
   {
@@ -423,7 +426,7 @@
     "text": "Click To Test Dismiss",
     "font_size": "20",
     "font_weight": "bold",
-    "background_color": "#07b4f2",
+    "background_color": "#3b72eb",
     "width_percent": 0.7,
     "alignment": "center",
     "view_alignment": "center",
