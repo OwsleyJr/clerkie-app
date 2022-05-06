@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context";
 
 const Text = (props) => {
   const [dismissView, setDismissView] = useState(true);
-  const { popupSwitcher, screenSwitcher, setViewData } = useGlobalContext();
+  const { popupSwitcher, screenSwitcher, setViewData, getColor, newColor } =
+    useGlobalContext();
+  const [cardColor, setCardColor] = useState(props.cardData.background_color);
 
   const dismissSwitcher = () => {
     setDismissView(false);
   };
 
+  const handleJsonColorChange = () => {
+    setCardColor(getColor());
+  };
+
+  console.log(newColor);
+
   return (
     <>
       {dismissView && (
         <CardContainer
+          cardColor={cardColor}
           cardData={props.cardData}
           onClick={() =>
             props.cardData.click_action === "present_fullscreen"
@@ -22,6 +31,8 @@ const Text = (props) => {
               ? (popupSwitcher(), setViewData(props.cardData))
               : props.cardData.click_action === "dismiss"
               ? dismissSwitcher()
+              : props.cardData.click_action === "change_color"
+              ? handleJsonColorChange()
               : ""
           }
         >
@@ -41,9 +52,7 @@ export default Text;
 const CardContainer = styled.div`
   display: flex;
   background-color: ${(props) =>
-    props.cardData.background_color
-      ? props.cardData.background_color
-      : "white"};
+    props.cardData.background_color ? props.cardColor : "white"};
   border-radius: 5px;
   width: 100%;
   margin: 0px 15px 0px 15px;

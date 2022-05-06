@@ -16,6 +16,25 @@ const AppProvider = ({ children }) => {
     setPopupView(!popupView);
   };
 
+  const getColor = () => {
+    const color = {
+      r: Math.floor(Math.random() * 256),
+      g: Math.floor(Math.random() * 256),
+      b: Math.floor(Math.random() * 256),
+    };
+
+    const colorToHash = (r, g, b) =>
+      "#" +
+      [r, g, b]
+        .map((x) => {
+          const hash = x.toString(16);
+          return hash.length === 1 ? "0" + hash : hash;
+        })
+        .join("");
+
+    return colorToHash(color.r, color.g, color.b);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -27,6 +46,7 @@ const AppProvider = ({ children }) => {
         viewData,
         setViewType,
         viewType,
+        getColor,
       }}
     >
       {children}

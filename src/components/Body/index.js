@@ -19,7 +19,7 @@ const Body = () => {
         {clerkieData.map((cardData, idx) => {
           if (!secondFullView) {
             if (cardData.type === "text_with_image") {
-              return <TextWithImage key={idx} cardData={cardData} id={idx} />;
+              return <TextWithImage key={idx} cardData={cardData} />;
             }
             if (cardData.type === "text") {
               return <Text key={idx} cardData={cardData} />;
