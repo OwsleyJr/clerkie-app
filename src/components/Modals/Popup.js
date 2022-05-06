@@ -70,8 +70,8 @@ const CardContainer = styled.div`
   border-width: 2px;
   background-color: #1f2128;
   border-radius: 12px;
-  height: 60%;
-  width: 25%;
+  width: 35%;
+  max-height: 60%;
   padding-left: 25px;
   padding-right: 25px;
   margin-top: 20px;

@@ -5,7 +5,8 @@
   },
   {
     "type": "text",
-    "text": "Welcome to my test app! This is more text added to the card for testing purposes.",
+    "text": "Welcome to my test app! This is extra text added to the card for testing purposes.",
+    "background_color": "#34eba4",
     "font_size": "20",
     "font_weight": "bold",
     "width_percent": 0.7,
@@ -64,7 +65,7 @@
   {
     "type": "image",
     "h2w_ratio": 1.0,
-    "width_percent": 0.5,
+    "width_percent": 0.4,
     "height": 200,
     "view_alignment": "center",
     "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
@@ -86,6 +87,9 @@
         {
           "type": "text",
           "text": "This is my popup!",
+          "font_size": "20",
+          "font_weight": "bold",
+          "background_color": "#34eba4",
           "click_action": "dismiss"
         },
         {
@@ -94,17 +98,18 @@
         },
         {
           "type": "text_with_image",
+          "border_color": "#a311f7",
           "title": {
-            "text": "Test Popup",
-            "font_size": "14",
-            "font_weight": "normal",
+            "text": "Really cool text",
+            "font_size": "20",
+            "font_weight": "bold",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
-            "text": "Subtitle",
-            "font_size": "12",
+            "text": "Put here",
+            "font_size": "16",
             "font_weight": "normal",
             "alignment": "center",
             "view_alignment": "center",
@@ -123,7 +128,7 @@
         {
           "type": "image",
           "h2w_ratio": 1.0,
-          "width_percent": 0.5,
+          "width_percent": 0.4,
           "view_alignment": "center",
           "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
           "click_action": "dismiss"
@@ -134,7 +139,9 @@
         },
         {
           "type": "text",
-          "text": "This is my popup!",
+          "text": "What a nice looking text box!",
+          "font_size": "28",
+          "font_weight": "normal",
           "click_action": "dismiss"
         },
         {
@@ -143,18 +150,19 @@
         },
         {
           "type": "text_with_image",
+          "border_color": "#f71156",
           "title": {
-            "text": "Test Popup",
-            "font_size": "14",
-            "font_weight": "normal",
+            "text": "Even better than cool",
+            "font_size": "30",
+            "font_weight": "bolder",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
-            "text": "Subtitle",
-            "font_size": "12",
-            "font_weight": "normal",
+            "text": "Somewhere",
+            "font_size": "20",
+            "font_weight": "bold",
             "alignment": "center",
             "view_alignment": "center",
             "color": "gray"
@@ -174,6 +182,7 @@
   },
   {
     "type": "text_with_image",
+    "border_color": "#a311f7",
     "title": {
       "text": "Test Popup",
       "font_size": "30",
@@ -281,6 +290,7 @@
   },
   {
     "type": "text_with_image",
+    "border_color": "#07b4f2",
     "title": {
       "text": "Click To Test Fullscreen",
       "font_size": "25",
@@ -372,7 +382,7 @@
     "width_percent": 0.7,
     "alignment": "center",
     "view_alignment": "center",
-    "color": "black",
+    "color": "#07b4f2",
     "click_action": "dismiss"
   },
   {
@@ -386,6 +396,22 @@
     "height": 200,
     "view_alignment": "center",
     "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+    "click_action": "dismiss"
+  },
+  {
+    "type": "space",
+    "height": 25
+  },
+  {
+    "type": "text",
+    "text": "Click To Test Dismiss",
+    "font_size": "20",
+    "font_weight": "bold",
+    "background_color": "#07b4f2",
+    "width_percent": 0.7,
+    "alignment": "center",
+    "view_alignment": "center",
+    "color": "black",
     "click_action": "dismiss"
   }
 ]

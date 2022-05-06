@@ -40,7 +40,10 @@ export default Text;
 
 const CardContainer = styled.div`
   display: flex;
-  background-color: white;
+  background-color: ${(props) =>
+    props.cardData.background_color
+      ? props.cardData.background_color
+      : "white"};
   border-radius: 5px;
   width: 100%;
   margin: 0px 15px 0px 15px;
