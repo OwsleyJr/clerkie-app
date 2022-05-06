@@ -78,6 +78,7 @@ const Container = styled.div`
 `;
 
 const FullscreenView = styled.h1`
+  display: flex;
   font-weight: bolder;
   font-size: 80px;
   color: #07b4f2;

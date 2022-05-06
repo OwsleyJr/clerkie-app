@@ -99,7 +99,7 @@ const CardContainer = styled.div`
   border-style: solid;
   border-color: ${(props) =>
     props.cardData.border_color ? props.cardData.border_color : ""};
-  width: 100%;
+  width: ${(props) => (props.cardData.width ? props.cardData.width : "100%")};
   position: relative;
   flex-direction: row;
   margin: 0px 15px 0px 15px;

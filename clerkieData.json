@@ -183,6 +183,7 @@
   {
     "type": "text_with_image",
     "border_color": "#a311f7",
+    "width": "100%",
     "title": {
       "text": "Test Popup",
       "font_size": "30",
@@ -307,6 +308,7 @@
   {
     "type": "text_with_image",
     "border_color": "#07b4f2",
+    "width": "100%",
     "title": {
       "text": "Click To Test Fullscreen",
       "font_size": "25",
