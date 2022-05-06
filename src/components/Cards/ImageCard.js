@@ -60,7 +60,7 @@ const CardContainer = styled.div`
   position: relative;
   aspect-ratio: ${(props) => props.cardData.h2w_ratio};
   border-radius: 5px;
-  height: 200px;
+  height: 220px;
   width: 100%;
   cursor: ${(props) =>
     props.cardData.click_action_data ? "pointer" : "default"};
@@ -74,6 +74,7 @@ const CardContainer = styled.div`
   }
   @media (max-width: 768px) {
     width: 85%;
+    height: 180px;
     &:hover {
       transform: scale(
         ${(props) => (props.cardData.click_action_data ? 1 : 1)}
@@ -83,10 +84,11 @@ const CardContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: 100%;
+  height: inherit;
   width: ${(props) => Math.round(props.cardData.width_percent * 100)}%;
   text-align: ${(props) => props.cardData.view_alignment};
   position: relative;
+  display: flex;
 `;
 
 const SquareImage = styled(Image)`
