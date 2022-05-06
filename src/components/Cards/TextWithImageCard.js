@@ -146,6 +146,7 @@ const RightSide = styled.div`
   flex-direction: column;
   @media (max-width: 768px) {
     width: 50%;
+    padding-right: 10px;
   }
 `;
 

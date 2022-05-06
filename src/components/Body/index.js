@@ -70,6 +70,7 @@ const Container = styled.div`
   margin: auto;
   max-width: 600px;
   min-height: 100vh;
+  padding-bottom: 20px;
   @media (max-width: 768px) {
     min-height: 0;
     padding-top: 10px;

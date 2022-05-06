@@ -35,16 +35,16 @@
           "type": "text_with_image",
           "title": {
             "text": "Test Popup",
-            "font_size": "20",
-            "font_weight": "bold",
+            "font_size": "28",
+            "font_weight": "bolder",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
             "text": "Subtitle",
-            "font_size": "16",
-            "font_weight": "normal",
+            "font_size": "22",
+            "font_weight": "bold",
             "alignment": "center",
             "view_alignment": "center",
             "color": "gray"
@@ -102,7 +102,7 @@
           "title": {
             "text": "Really cool text",
             "font_size": "20",
-            "font_weight": "bold",
+            "font_weight": "bolder",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
@@ -110,7 +110,7 @@
           "subtitle": {
             "text": "Put here",
             "font_size": "16",
-            "font_weight": "normal",
+            "font_weight": "bold",
             "alignment": "center",
             "view_alignment": "center",
             "color": "gray"
@@ -223,6 +223,8 @@
         {
           "type": "text",
           "text": "This is my popup!",
+          "background_color": "#34eba4",
+          "font_size": "20",
           "click_action": "dismiss"
         },
         {
@@ -233,15 +235,15 @@
           "type": "text_with_image",
           "title": {
             "text": "Test Popup",
-            "font_size": "14",
-            "font_weight": "normal",
+            "font_size": "20",
+            "font_weight": "bold",
             "color": "black",
             "alignment": "center",
             "view_alignment": "center"
           },
           "subtitle": {
             "text": "Subtitle",
-            "font_size": "12",
+            "font_size": "16",
             "font_weight": "normal",
             "alignment": "center",
             "view_alignment": "center",
@@ -260,6 +262,7 @@
 
         {
           "type": "text_with_image",
+          "border_color": "#07b4f2",
           "title": {
             "text": "Test Popup",
             "font_size": "14",
