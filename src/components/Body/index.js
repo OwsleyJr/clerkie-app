@@ -4,7 +4,7 @@ import Text from "../Cards/TextCard";
 import ImageCard from "../Cards/ImageCard";
 import SpacingCard from "../Cards/SpacingCard";
 import styled from "styled-components";
-import clerkieData from "../../../clerkieData.json";
+import myData from "../../../myData.json";
 import FSTwo from "./FSTwo";
 import Popup from "../Modals/Popup";
 import { useGlobalContext } from "../../context";
@@ -23,7 +23,7 @@ const Body = () => {
     <>
       <Container>
         <FullscreenView>Fullscreen View</FullscreenView>
-        {clerkieData.map((cardData, idx) => {
+        {myData.map((cardData, idx) => {
           if (!secondFullView) {
             if (cardData.type === "text_with_image") {
               return <TextWithImage key={idx} cardData={cardData} />;

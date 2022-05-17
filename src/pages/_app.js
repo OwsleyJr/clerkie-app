@@ -2,14 +2,13 @@ import "../styles/globals.css";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import AppProvider from "../context";
-import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps, router }) {
   return (
     <AppProvider>
       <Layout>
         <Head>
-          <title>Clerkie-App</title>
+          <title>JSON-Parser-App</title>
           <meta name="description" content="This is my portfolio" />
           <meta
             name="viewport"
@@ -17,19 +16,23 @@ function MyApp({ Component, pageProps, router }) {
           ></meta>
           <meta
             property="og:site_name"
-            content="Clerkie-App"
+            content="Json-Parser-App"
             data-rh="true"
           ></meta>
-          <meta property="og:title" content="Clerkie-App" data-rh="true"></meta>
+          <meta
+            property="og:title"
+            content="Json-Parser-App"
+            data-rh="true"
+          ></meta>
 
           <meta
             property="og:description"
-            content="Clerkie App Assessment"
+            content="Json Parser App"
             data-rh="true"
           ></meta>
           <meta
             property="og:url"
-            content="https://clerkie-app.com"
+            content="https://Json-parser-app.com"
             data-rh="true"
           ></meta>
         </Head>

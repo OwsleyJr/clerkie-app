@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
-import Logo from "../../../assets/clerkieLogo.jpg";
+import Logo from "../../../assets/grid.png";
 import Image from "next/image";
 import { useGlobalContext } from "../../../context";
 
@@ -30,12 +30,7 @@ const Header = () => {
         <>
           <MobileNav>
             <ImageContainer>
-              <RoundedImage
-                src={Logo}
-                alt="Clerkie Logo"
-                width={40}
-                height={40}
-              />
+              <RoundedImage src={Logo} alt="Cool Logo" width={40} height={35} />
             </ImageContainer>
 
             <BurgerContainer show={show} onClick={() => setShow(!show)}>

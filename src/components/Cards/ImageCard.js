@@ -52,7 +52,7 @@ const ImageCard = (props) => {
 export default ImageCard;
 
 const CardContainer = styled.div`
-  background-color: white;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;

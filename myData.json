@@ -5,7 +5,7 @@
   },
   {
     "type": "text",
-    "text": "Welcome to my test app! This is extra text added to the card for testing purposes.",
+    "text": "Welcome to my React JSON parsing app!",
     "background_color": "#34eba4",
     "font_size": "20",
     "font_weight": "bold",
@@ -50,7 +50,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "present_popup"
@@ -68,7 +68,7 @@
     "width_percent": 0.4,
     "height": 200,
     "view_alignment": "center",
-    "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+    "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
     "click_action": "present_popup",
     "click_action_data": {
       "data": [
@@ -77,7 +77,7 @@
           "h2w_ratio": 1.0,
           "width_percent": 0.4,
           "view_alignment": "center",
-          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
           "click_action": "dismiss"
         },
         {
@@ -116,7 +116,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "present_popup"
@@ -130,7 +130,7 @@
           "h2w_ratio": 1.0,
           "width_percent": 0.5,
           "view_alignment": "center",
-          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
           "click_action": "dismiss"
         },
         {
@@ -168,7 +168,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "present_popup"
@@ -202,7 +202,7 @@
     },
 
     "image": {
-      "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+      "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
     },
 
     "click_action": "present_popup",
@@ -213,7 +213,7 @@
           "h2w_ratio": 1.0,
           "width_percent": 0.5,
           "view_alignment": "center",
-          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
           "click_action": "dismiss"
         },
         {
@@ -250,7 +250,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "present_popup"
@@ -280,7 +280,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "present_popup"
@@ -321,7 +321,7 @@
       "color": "black"
     },
     "image": {
-      "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+      "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
     },
     "height": 80,
     "click_action": "present_fullscreen",
@@ -336,7 +336,7 @@
           "h2w_ratio": 1.0,
           "width_percent": 0.5,
           "view_alignment": "center",
-          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
           "click_action": "dismiss"
         },
         {
@@ -359,7 +359,7 @@
           "h2w_ratio": 1.0,
           "width_percent": 0.5,
           "view_alignment": "center",
-          "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+          "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
           "click_action": "dismiss"
         },
         {
@@ -386,7 +386,7 @@
             "color": "gray"
           },
           "image": {
-            "src": "https://www.clerkie.io/static/alex-e0b46011967fc058ff8fdbac2599b55f.jpg"
+            "src": "https://avatarfiles.alphacoders.com/194/thumb-194640.jpg"
           },
           "height": 100,
           "click_action": "change_color"
@@ -416,10 +416,10 @@
   {
     "type": "image",
     "h2w_ratio": 1.0,
-    "width_percent": 0.3,
+    "width_percent": 0.5,
     "height": 200,
     "view_alignment": "center",
-    "src": "https://www.clerkie.io/static/coin-75fb80be577c00ca53291d2bb116ce01.png",
+    "src": "https://images3.alphacoders.com/243/thumb-350-243455.jpg",
     "click_action": "dismiss"
   },
   {
